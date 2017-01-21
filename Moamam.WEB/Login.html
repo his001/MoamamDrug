@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+<script type="text/javascript">
+    
+    function SetLogin()
+    {
+        location.href = "/LogIn/LogIn.aspx?UserID=" + document.getElementById("UserID").value;
+    }
+
+
+    function winopen()
+    {
+        url = "/LogIn/LogIn.aspx?UserID=" + document.getElementById("UserID").value;
+        window.open(url, '', 'toolbar=no,scrollbars=yes,resizable=yes,top=0,left=0,width=1024,height=768');
+    }
+
+</script>
+</head>
+<body>
+
+    <form name="frm1" method="post">
+
+        <table>
+            <tr>
+                <td>
+                    <input type="text" id="UserID" value="w0IDTtfAuPgFkfvCootXoA==" />
+                </td>
+                <td>
+                    <input type="button" value="Login" onclick="SetLogin();" />&nbsp;
+                    <input type="button" value="PopupTest" onclick="winopen();" />
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Master_MasterPage" %>
+<!DOCTYPE html>
+<html lang="ko">
+ <head runat="server">
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Auto Depot Order</title>
+    <link rel="stylesheet" href="/Common/css/common.css" />
+    <link rel="stylesheet" href="/Common/css/sub.css" />
+    <link rel="stylesheet" href="/Common/css/jquery-ui.css" />
+    <script type="text/javascript" src="/Common/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Common/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Common/js/nTextBox.js"></script>
+    <script type="text/javascript" src="/Common/js/common.js"></script>
+    <script>
+        function jsfn_progressBarMst(str) {
+            if (str == 'Y') {
+                $('#divProgress4Mstjs').css("display", "block");
+            } else {
+                $('#divProgress4Mstjs').css("display", "none");
+            }
+        }
+        // readonly 의 배경색상을 변경
+        $(document).ready(function () {
+            $('form input[type="text"]').each(function (i, e) {
+                if ($(e).attr('readonly') == 'readonly') {
+                    $(e).css('background-color', '#EBEBE4');
+                }
+            });
+        });
+        function jsfn_ExcelDownloadLimit() {
+            var _rtn = true;
+            try {
+                var _ExcelLimiteCnt = $("#LyCus_hidTotal").val();
+                if (_ExcelLimiteCnt > 50000) {
+                    alert('엑셀 다운로드는 최대 5만건까지만 다운 로드 가능합니다.');
+                    _rtn = false;
+                }
+            } catch (e) {
+
+            }
+            if (_rtn && !confirm('다운로드 하시겠습니까?')) {
+                _rtn = false;
+            }
+            return _rtn;
+        }
+        function jsfn_SetTitleHS() {
+
+            if ($('#Ly_CommonHeaderArea').css("display") !='none') {
+                $('#Ly_CommonHeaderArea').css("display", "none");
+                if (window.screen.height == 768) { $("#Ly_grid1Scroll").css('height', '450px'); }
+                $('#LyH_C_Text').text('상단 보이기');
+            } else {
+                $('#Ly_CommonHeaderArea').css("display", "block");
+                $('#LyH_C_Text').text('상단 숨기기');
+                if (window.screen.height == 768) { $("#Ly_grid1Scroll").css('height', '345px'); }
+            }
+        }
+        function jsfn_setScreenHeight() {
+            var _topMenu = "200";
+            var _SearchArea = "150";
+            var _ContHeader = "30";
+            var _Show_contHeight = window.screen.height - parseInt(_topMenu) - parseInt(_SearchArea) - parseInt(_ContHeader);
+            //alert(window.screen.height + ' : window.screen.height / ' + _Show_contHeight + ' : _Show_contHeight ');
+            if (window.screen.height == 768) { $("#Ly_grid1Scroll").css('height', '345px');}
+            if (parseInt(_Show_contHeight) > 500) {
+                $(".content_aria").css('height', _Show_contHeight + 'px');
+            }
+        }
+        $(document).ready(function () {
+            jsfn_setScreenHeight();
+        });
+    </script>
+
+     <script src="/Common/js/jquery.bpopup.min.js"></script>
+    <asp:ContentPlaceHolder ID="ContentHead" runat="server"></asp:ContentPlaceHolder>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5shiv.js"></script>
+    <![endif]-->
+ </head>
+
+ <body>
+    <form runat="server">
+    <asp:ScriptManager ID="ScriptManager" runat="server" EnableCdn="true" />
+    <div id="divProgress4Mstjs" class="dvProgressMst" style="position:absolute;top:50%;left:46%;z-index:999;width:110px;height:110px;display:none;"><img src="/Images/common/loading_4.gif" alt="" style="width:110px;height:110px;"></div>
+	    <div id="Ly_Body">
+            <div id="Ly_CommonHeaderArea">
+                <header id="headnew" class="clear">
+                    <p class="user_aria f_r"><asp:Label ID="lblUpdateDaytime" runat="server"></asp:Label></p>
+                </header>
+		        <header id="header" class="clear">
+			        <h1 class="logo f_l">
+                        <%--<img src="/Images/common/logo_hpf.png" alt="로고">--%>
+                        <asp:Image ImageUrl="/Images/Common/logo_ado.png" CssClass="logo f_l" runat="server" AlternateText="AUTO DEPOT ORDER SYSTEM"/>
+			        </h1>
+			        <p class="user_aria f_r">
+				        <span><span class="user_name"><asp:Label ID="lblUserSession" runat="server" Font-Bold="false">Anonymous</asp:Label></span>님 로그인하셨습니다</span>
+                        <asp:Button ID="btnLinkLogOut" runat="server" OnClientClick="return ConfirmLogOut();" OnClick="btnLogOut_Click" class="logout" Text="로그아웃" />
+			        </p>
+		        </header>
+		        <nav id="gnb">
+			        <ul>
+                    <asp:Repeater ID="rptMenu" runat="server" OnItemDataBound="rptMenu_ItemDataBound">
+				        <ItemTemplate>
+				        <li>
+                            <asp:HyperLink ID="hlnMenu" runat="server"><%# Eval("MENU_GROUP_NM") %></asp:HyperLink>
+					        <ul>
+                            <asp:Repeater ID="rptSubmenu" runat="server" OnItemDataBound="rptSubmenu_ItemDataBound">
+                                <ItemTemplate>
+						            <li><asp:HyperLink ID="hlnSubmenu" runat="server" NavigateUrl='<%# Eval("MENU_URL") %>'><%# Eval("MENU_NM") %></asp:HyperLink></li>
+                                </ItemTemplate>
+                            </asp:Repeater>
+					        </ul>
+				        </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+			        </ul>
+		        </nav>
+            </div>
+		<section id="content">
+			<article id="location">
+				<span id="LyHdnTopMenu"><span class="dep1"><asp:Label ID="lblpath" runat="server" /></span><span class="level">&gt;</span><span class="dep2"><asp:Label ID="lblCurrentNoade" runat="server" /></span></span>
+                <%--<p class="code f_r" style="display:none;" >아이템(이벤트)코드 <hpf:NTextBox ID="txtEventDetail" runat="server" /> <hpf:NButton ID="btnEventDetail" runat="server" CssClass="btn btn_default" Text="조회" /></p>--%>
+                <p class="code f_r" > <a href="javascript:jsfn_SetTitleHS('hide');"><span id="LyH_C_Text">상단 숨기기</span></a>
+			</article>
+			<div class="content_aria">
+                <asp:ContentPlaceHolder id="ContentMain" runat="server">
+                </asp:ContentPlaceHolder>
+			</div>
+		</section>
+	</div>
+
+    <asp:UpdateProgress id="updateProgress" runat="server">
+        <ProgressTemplate>
+            <div id="divProgress" style="left:46%;position:absolute;top:50%;">
+                <img src="/Images/common/loading_3.gif" alt="" style="width:110px;height:110px;" />
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+    </form>
+
+ </body>
+</html>

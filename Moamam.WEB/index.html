@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<!--
+    Big Picture by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Moamam 투약정보</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <!--[if lte IE 8]><script src="/Common/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/Common/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="/Common/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/Common/css/ie9.css" /><![endif]-->
+    <!-- Scripts -->
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+    <script src="/Common/js/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+    <script src="/Common/js/jquery.poptrox.min.js"></script>
+    <script src="/Common/js/jquery.scrolly.min.js"></script>
+    <script src="/Common/js/jquery.scrollex.min.js"></script>
+    <script src="/Common/js/skel.min.js"></script>
+    <script src="/Common/js/util.js"></script>
+    <!--[if lte IE 8]><script src="/Common/js/ie/respond.min.js"></script><![endif]-->
+    <script src="/Common/js/main.js"></script>
+    <script src="/Common/js/jquery.bpopup.min.js"></script>
+    <script src="/Common/js/jquery.toastmessage.js"></script>
+    <link href="/Common/css/jquery.toastmessage.css" rel="stylesheet" />
+    <script src="/Common/js/moamam.js"></script>
+    <script src="/Common/js/page1.js"></script>
+
+    <link href="/Common/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Common/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="/Common/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <h1>Drugs.or.kr</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro"><span id="LyLoginID">처음오셨나요?</span></a></li>
+                <li><a href="#Lysec_BokYongHooKi_Write">복용 후기</a></li>
+                <li><a href="#Lysec_BokYongHooKi_LstGrid">투약정보</a></li>
+                <li><a href="#contact">투약의뢰서</a></li>
+                <li id="LnkPassChange" style="visibility:hidden"><a href="#Lysec_BokYongHooKi_Best">암호변경</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+    <!-- Intro -->
+    <section id="intro" class="main style1 dark fullscreen">
+        <div class="content">
+            <!-- ################### 첫방문 / 회원가입 / 로그인 ################### -->
+            <div id="LyQ1_Y1" style="display:block;">
+                <header><h2>첫 방문 이신가요?</h2></header>
+                <p><a href="#" onclick="jsfn_isFirst('Y');"><strong>Yes</strong></a> or <a href="#" onclick="jsfn_isFirst('N');"><strong>No</strong></a></p>
+            </div>
+            <!-- 회원가입 폼 -->
+            <div id="LyQ1_Y1_Reg1" style="display:none;">
+                <header><h2>회원가입</h2></header>
+                <table border="0" style="width:100%">
+                    <tr>
+                        <td colspan="3">
+                            IP : <span id="txt_Userip"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;">이름</td>
+                        <td colspan="2"><input type="text" id="txtMemName" maxlength="50" /></td>
+                    </tr>
+                    <tr><td colspan="3" style="height:10px;"></td></tr>
+                    <tr>
+                        <td style="vertical-align:middle;">E-mail</td>
+                        <td colspan="2"><input type="text" id="txtRegistID" maxlength="50" /></td>
+                    </tr>
+                    <tr><td colspan="3" style="height:10px;"></td></tr>
+                    <tr>
+                        <td colspan="3" style="height:10px;">
+                            <input type="button" id="btnRegister" value="회원가입" onclick="jsfn_RegistChk();" />
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- 로그인 폼 -->
+            <div id="LyQ1_Y1_Login1" style="display:none;">
+                <header><h2>로그인</h2></header>
+                <table border="0" style="width:100%">
+                    <tr>
+                        <td style="vertical-align:middle;">E-mail</td>
+                        <td><input type="text" id="txtUserID" maxlength="50" /></td>
+                        <td rowspan="3" style="padding-left:10px;"></td>
+                    </tr>
+                    <tr><td colspan="3" style="height:10px;"></td></tr>
+                    <tr>
+                        <td style="vertical-align:middle;">암호</td>
+                        <td><input type="password" id="txtPwd" maxlength="50" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="height:10px;">
+                            <table>
+                                <tr>
+                                    <td> </td>
+                                    <td style="text-align:right;">
+                                        <input type="checkbox" id="CheckSaveUserID" name="CheckSaveUserID" style="cursor:pointer;" />
+                                    </td>
+                                    <td style="text-align:left;">
+                                        <label for="CheckSaveUserID" style="cursor:pointer;">아이디 저장</label>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td style="text-align:right;">
+                                                    <input type="checkbox" id="CheckAotoLogin" name="CheckAotoLogin" style="cursor:pointer;" />
+                                                </td>
+                                                <td style="text-align:left;"><label for="CheckAotoLogin" style="cursor:pointer;">자동로그인</label></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="height:50px;"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <input type="button" id="btnLogin" value="Log In" onclick="jsfn_LoginChk();" />
+                                        <input type="button" id="btnIDFind" value="비밀번호 찾기" onclick="jsfn_SendPwdEmail();" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- ################### 첫방문 / 회원가입 / 로그인 ################### -->
+            <!-- 복용 후기 진행 -->
+            <div id="LyQ2_YN_ALL" style="display:none;">
+                <header><h2>완치 되셨습니까?</h2></header>
+                <a href="#" onclick="jsfn_isFirst3YN('Y');"><strong>Yes</strong></a> or <a href="#" onclick="jsfn_isFirst3YN('N');"><strong>No</strong></a>
+            </div>
+            <div id="LyQ3_YN_ALL" style="display:none;">
+                <header><h2>신규 복용 후기를 작성 하시겠습니까?</h2></header>
+                <a href="#Lysec_BokYongHooKi_Write"><strong>Yes</strong></a>
+
+                <header><h2>기존 복용 후기를 선택 하시겠습니까?</h2></header>
+                <a href="#Lysec_BokYongHooKi_LstGrid" onclick="javascript:jsfn_Search();"><strong>Yes</strong></a>
+            </div>
+            <!--<footer><a href="#Lysec_BokYongHooKi_Write" class="button style2 down"><font style="font-size:15px;">복용후기 보기</font></a></footer>-->
+        </div>
+    </section>
+
+
+
+
+
+    <!-- 복용 후기 작성 -->
+    <section id="Lysec_BokYongHooKi_Write" class="main style3 secondary">
+        <div class="content box style2">
+            <header>
+                <h2>복용 후기</h2>
+            </header>
+
+            <div class="row">
+                <div class="col-xs-4">방문날짜</div>
+                <div class="col-xs-8">
+                    <input type="text" id="txt_Visit_Date" class="datepicker" />
+                    <input type="hidden" id="txt_idx" value="0" /></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">완치날짜</div>
+                <div class="col-xs-8"><input type="text" id="txt_NoPain_Date" class="datepicker" /></div>
+            </div>
+
+<div class="row"> <!-- 8 : 4 비율 -->
+    <div class="col-xs-8 col-sm-8 col-md-8">
+<textarea id="txt_JngSang" name="txt_JngSang" style="height:250px;padding-right:10px;font-size:12px;">
+< 증상 >
+ex) 기침, 콧물
+
+</textarea>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-10"><input type="text" id="txt_tempC" maxlength="4" onkeyup="onlyDecimal();" style="height:30px;" /></div>
+                <div class="col-xs-2">℃</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <table>
+                        <tr style="height:2px;background-color:white;">
+                            <td style="background-color:green;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberGraan" value="G" checked /><label for="rdoFeberGraan" style="color:white;cursor:pointer;">정상</label></td>
+                            <td style="background-color:yellow;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberYellow" value="Y" /><label for="rdoFeberYellow" style="cursor:pointer;">미열</label></td>
+                            <td style="background-color:red;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberRed" value="R" /><label for="rdoFeberRed" style="cursor:pointer;">고열</label></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                해열제
+                    <table>
+                        <tr>
+                            <td style="width:40px"><input type="radio" name="rdoHaeYeolJeOX" id="rdoHaeYeolJeO" value="O" /></td>
+                            <td><label for="rdoHaeYeolJeO" style="cursor:pointer;">O</label></td>
+                            <td style="width:40px"><input type="radio" name="rdoHaeYeolJeOX" id="rdoHaeYeolJeX" value="X" checked /></td>
+                            <td><label for="rdoHaeYeolJeX" style="cursor:pointer;">X</label></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">※ 같은계열 4시간,<br />다른계열 2시간 간격</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row"> <!-- 8 : 4 비율 -->
+    <div class="col-xs-8 col-sm-8 col-md-8">
+        처방-약종류 불러오기<br />
+<textarea id="txt_ChouBang" name="txt_ChouBang" style="height:250px;padding-right:10px;font-size:12px;">
+< 처방 >
+ex) 투세프건조시럽
+
+</textarea>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <input type="text" id="txt_Yak_iLbun" maxlength="4" class="numericOnly" style="height:30px;" />일분
+
+        항생제 보관방법
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanCold" value="C" checked />
+                </td>
+                <td>
+                    <label for="rdoHangSaengJeBokanCold" style="cursor:pointer;">냉장</label>
+                </td>
+                <td>
+                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanSilOn" value="S" />
+                </td>
+                <td>
+                    <label for="rdoHangSaengJeBokanSilOn" style="cursor:pointer;">실온</label>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>
+                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatA" value="A" />
+                </td>
+                <td>
+                    <label for="rdoHangSaengJeEatA" style="cursor:pointer;">식전</label>
+                </td>
+                <td>
+                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatB" value="B" />
+                </td>
+                <td>
+                    <label for="rdoHangSaengJeEatB" style="cursor:pointer;">식간</label>
+                </td>
+                <td>
+                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatC" value="C" checked />
+                </td>
+                <td>
+                    <label for="rdoHangSaengJeEatC" style="cursor:pointer;">식후</label>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+<textarea id="txt_ChamGoSaHang" name="txt_ChamGoSaHang" style="height:150px;padding-right:10px;font-size:12px;">
+< 참고사항 > * 어린이집 선생님께 남기실 말씀도 적어주세요.
+○ 철분제와 같이 복용 X , 철분제 복용 잠시 중단
+○ 만약 2개 이상일 때 최소 5분 간격
+
+</textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+<textarea id="txt_BokYongHooKi" name="txt_BokYongHooKi" style="height:150px;padding-right:10px;font-size:12px;">
+< 복용후기 >
+ex) 항생제 복용 때문에 설사함
+
+</textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <a href="#contact" onclick="javascript:jsfn_makeToYakReq();">투약 의뢰서 작성하기</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+            <input type="button" id="btnBokYongHooKiSave" value="저장" onclick="jsfn_BokYongHooKi_Save();" />
+    </div>
+</div>
+
+        </div>
+        <!--<a href="#Lysec_BokYongHooKi_Best" class="button style2 down anchored">Next</a>-->
+    </section>
+
+
+
+
+
+    <link href="/common/jqgrid/css/ui.jqgrid.css" type="text/css" rel="stylesheet" />
+    <link href="/common/jqgrid/css/ui.jqgrid-custom.css" type="text/css" rel="stylesheet" />
+    <script src="/common/jqgrid/js/i18n/grid.locale-kr.js" type="text/javascript"></script>
+    <script src="/common/jqgrid/js/jquery.jqGrid.js" type="text/javascript"></script>
+    <script src="/Common/js/page1Grid.js"></script>
+    <style>
+        .ellipsis {
+            white-space: nowrap;
+            text-overflow: ellipsis; /* IE, Safari */
+            -o-text-overflow: ellipsis; /* Opera under 10.7 */
+            overflow: hidden; /* "overflow" value must be different from "visible" */
+            -moz-binding: url('ellipsis.xml#ellipsis');
+        }
+
+        .grdEdit35Height {
+            max-height: 35px !important;
+        }
+    </style>
+    <!-- 최근 복용 후기 리스트 -->
+    <section id="Lysec_BokYongHooKi_LstGrid" class="main style3 primary">
+        <div style="width:100%;text-align:center;">
+
+            <header><!--<h2>최근 복용 후기</h2>--></header>
+            <!-- Gallery  -->
+            <div class="gallery">
+                <article class="from-left">
+                    투약정보 목록
+                </article>
+                <article class="from-right" style="width:60%">
+                    조회된 행을 더블 클릭 하시면 조회 수정이 가능합니다.
+                </article>
+            </div>
+
+            <!--<div id="gridContent" class="ctrl_grid mt18" style="min-height:110px;text-align:center;min-width:600px;overflow-x:scroll;overflow-y:scroll;">-->
+            <div id="LyBtnGrdSearch" style="text-align:right;padding:0 15px 15px 0;"><input type="button" id="btnSearch" class="btn btn_inquiry" value="조회" style="cursor:pointer;" onclick="jsfn_Search();" /></div>
+            <table id="grdMasterContent"></table>
+            <div id="pager" style="width:600px;height:44px;"></div>
+            <!--</div>-->
+
+        </div>
+    </section>
+
+
+
+    <!-- Contact -->
+    <section id="contact" class="main style3 secondary">
+        <div class="content">
+            <header>
+                <h2>투약의뢰서</h2>
+                <!--<p> </p>-->
+            </header>
+            <div class="box">
+                <form method="post" action="#">
+                    <div class="field half first"><input type="text" id="txt_ChildName" name="txt_ChildName" placeholder="아이이름" maxlength="10" /></div>
+                    <div class="field half"><input type="text" name="txt_HP" placeholder="긴급연락처" maxlength="15" /></div>
+
+                    <div class="field half first"><input type="text" id="txt_ReceptName" name="txt_ReceptName" placeholder="수신인이름" maxlength="10" /></div>
+                    <div class="field half"><input type="text" id="txt_ReceptHP" name="txt_ReceptHP" placeholder="수신번호" maxlength="15" /></div>
+
+                    <div class="field">
+                        <textarea id="txt_ToYak_messageA" name="txt_ToYak_messageA" placeholder="Message" rows="7">
+YYYY/MM/DD ~ YYYY/MM/DD
+XX 어린이집(유아/유치원)에
+1일 x회 투약을 의뢰합니다.
+
+※약은 소분해서 보내주시는 것을 권장 합니다.
+
+2017-01-10 홍길동 배상
+                        </textarea>
+                    </div>
+
+
+                    <ul class="actions">
+                        <li><input type="submit" value="발송하기" /></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 암호변경 -->
+    <section id="Lysec_BokYongHooKi_Best" class="main style2 left dark fullscreen" style="display:none;">
+        <div class="content box style2">
+            <header>
+                <h2>암호변경</h2>
+            </header>
+            <table border="0" style="width:100%">
+                <tr>
+                    <td style="vertical-align:middle;">E-mail</td>
+                    <td><input type="text" id="txtChgUserID" maxlength="50" /></td>
+                    <td rowspan="3" style="padding-left:10px;"></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td style="vertical-align:middle;">암호</td>
+                    <td><input type="password" id="txtOrgPwd" maxlength="50" /></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td style="vertical-align:middle;">변경할암호</td>
+                    <td><input type="password" id="txtNewPwd" maxlength="50" /></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td colspan="3" style="height:10px;">
+                        <input type="button" id="btnChgPwd" value="암호변경" onclick="jsfn_ChangePwd();" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <!-- Icons -->
+        <ul class="actions">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+            <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+        </ul>
+        <!-- Menu -->
+        <ul class="menu">
+            <li>&copy; Moamam.com</li>
+            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </footer>
+
+    <script type="text/javascript">
+        //#########################################
+        $(document).ready(function () {
+            jsfn_chkCookieID();
+            $("#txtPwd").keypress(function (event) { if (event.which == 13) { jsfn_LoginChk(); } });
+            jsfn_getUserIP(function (ip) { $("#txt_Userip").html(ip); });
+            $(".numericOnly").keypress(function (e) {
+                if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+            });
+            var _Glovaltoday = new Date();
+            $("#txt_Visit_Date").val(_Glovaltoday.toISOString().substring(0, 10));
+            jsfn_InitGrid();
+        });
+        //#########################################
+    </script>
+    <input type="hidden" id="Login_userId">
+
+</body>
+</html>

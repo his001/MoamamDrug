@@ -1,0 +1,38 @@
+
+<script>
+document.write(encodeURI('아스피린'));
+</script>
+<form method="POST" action="/drug_info/basedrug/list.asp">
+	<table width="273" border="0" cellpadding="0" cellspacing="0" bgcolor="ffffff">
+	<tbody>
+	<tr>
+		<td height="33" colspan="3"><a href="/drug_info/basedrug/search.asp"><img src="images/main_sikbul_img/main_sikbul_img_01.jpg" width="273" height="33"></a></td>
+	</tr>
+	<tr>
+		<td width="86" height="22"><img src="images/main_sikbul_img/main_sikbul_img_02.jpg" width="86" height="22"></td>
+		<td colspan="2"><input name="drug_name" type="text" id="textfield" size="28"></td>
+	</tr>
+	<tr>
+		<td><img src="images/main_sikbul_img/main_sikbul_img_03.jpg" width="86" height="22"></td>
+		<td width="125" align="center"><input name="sunb_name" type="text" id="textfield2" size="19"></td>
+		<td width="62"><input type="checkbox" name="exact_sunb" id="radio" value="1">일치</td>
+	</tr>
+	<tr>
+		<td><img src="images/main_sikbul_img/main_sikbul_img_04.jpg" width="86" height="23"></td>
+		<td align="center"><input name="firm_name" type="text" id="textfield3" size="19"></td>
+		<td align="center"><input type="image" src="images/main_sikbul_img/main_sikbul_img_05.jpg" width="46" height="20"></td>
+	</tr>
+	<tr><td colspan="3" height="9"></td></tr>
+	</tbody>
+	</table>
+</form>
+
+
+
+<!--
+http://health.kr/searchAPI/keyword/default.asp?drug_name=aspi&sunb_name=&maxRows=12
+({"drugs":[{"keyword":"Aspirin Tab. 100mg Bayerkorea","category":"제품명"},{"keyword":"Aspirin Protect Tab. 100mg","category":"제품명"},{"keyword":"Aspirin Tab. 500mg Bayerkorea","category":"제품명"},{"keyword":"Aspirin Enteric Coated Tab. 100mg Hanmi","category":"제품명"},{"keyword":"Aspirin Tab. 100mg for Children Shinpoong","category":"제품명"},{"keyword":"Aspirin Tab. 500mg Shinpoong","category":"제품명"},{"keyword":"Aspirin Tab. 300mg Shinpoong","category":"제품명"},{"keyword":"Aspirin Tab.100mg","category":"제품명"},{"keyword":"Gaspid Tab. 5mg","category":"제품명"},{"keyword":"Gaspin Tab.","category":"제품명"},{"keyword":"Gaspiran Tab. 5mg","category":"제품명"},{"keyword":"speaspium Tab.","category":"제품명"}]});
+-->
+
+
+drug_name=%BE%C6%BD%BA%C7%C7%B8%B0&sunb_name=&firm_name=&x=25&y=19

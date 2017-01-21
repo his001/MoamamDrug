@@ -1,0 +1,310 @@
+﻿/* 
+@reference ~/Content/StyleSheets/Public/new.css
+@reference ui.jqgrid.css 
+*/
+
+
+.ui-widget 
+{ 
+    font-family: inherit
+}
+.ui-widget-content .ui-add {
+    height:30px;
+    padding:0px 10px 0px 10px;
+    margin-left:5px;
+    margin-right:5px;
+    border-radius:4px;
+}
+.ui-widget-content .ui-del{
+    height:30px;
+    padding:0px 12px 0px 12px;
+    margin-top:-9px;
+    margin-left:5px;
+    margin-right:5px;
+    border-radius:4px;
+}
+table
+{
+    border-collapse : separate;
+}
+table:before
+{
+    padding:0px;
+    border-spacing:0px;   
+}
+table .ui-jqgrid-htable
+{
+    border-collapse :collapse;
+    border : 1px solid lightGrey;
+}
+             
+.ui-jqgrid input, 
+.ui-jqgrid input[type="text"], 
+.ui-jqgrid input[type="datetime"],
+.ui-jqgrid textarea,
+.ui-jqgrid select, 
+.ui-jqgrid select[size],
+.ui-jqgrid .ui-pg-table td
+{
+    padding : 0px;
+    font-family : inherit;
+    width : auto;
+    height : 20px;
+    font-size : 12px;
+    margin-bottom : 0px;
+}
+
+.ui-jqgrid .ui-jqgrid-view,
+.ui-jqgrid .ui-jqgrid-pager,
+.ui-jqdialog
+{
+    font-size : 14px;
+}
+
+.ui-jqgrid .ui-icon-asc,
+.ui-jqgrid .ui-icon-desc 
+{
+    height:20px;
+}
+.ui-jqgrid .ui-pg-input 
+{
+    height:20px; 
+    font-size:12px;  
+}
+
+.ui-jqgrid .ui-pg-selbox
+{
+    margin:0.3em;
+}
+
+.ui-jqgrid .ui-paging-info
+{
+    margin-top:5px;
+}
+
+.ui-jqgrid .ui-i-asc, 
+.ui-jqgrid .ui-i-desc 
+{
+    height:20px;
+}
+/*解决jaGrid 列名多行显示时的问题*/
+.ui-jqgrid .ui-jqgrid-htable th,
+.ui-jqgrid .ui-jqgrid-htable th div, 
+.ui-jqgrid .ui-th-div-ie
+{   
+    height:auto;
+}
+.ui-jqgrid .ui-jqgrid-titlebar-close,
+.ui-jqgrid .ui-pg-selbox,
+.ui-jqgrid .ui-separator,
+.ui-jqgrid .ui-subgrid tr.ui-subtblcell td,
+.ui-jqdialog .ui-jqdialog-titlebar-close,
+.ui-jqgrid .tree-wrap,
+.ui-jqgrid .tree-minus,
+.ui-jqgrid .tree-plus,
+.ui-jqgrid .tree-leaf 
+{
+    height:24px;
+}
+.ui-jqgrid .ui-pg-button,
+.ui-jqgrid .ui-paging-info 
+{
+    height:24px;
+}
+.ui-jqgrid .ui-jqgrid-resize,
+.ui-jqgrid .ui-th-subgrid,
+.ui-jqgrid-dnd tr td 
+{
+    height:28px;
+}
+/*调节Grid行间距*/
+.ui-jqgrid tr.footrow td,
+.ui-jqgrid .ui-userdata,
+.ui-jqgrid tr.jqgrow td
+{
+    height:18px;
+}
+
+.ui-jqgrid tr.jqgroup td,
+.ui-jqgrid tr.jqfoot td 
+{
+    height:29px;
+}
+.ui-jqgrid .ui-jqgrid-htable
+{
+    height:30px;
+}
+.ui-jqgrid .ui-jqgrid-pager, 
+.ui-jqgrid .ui-jqgrid-toppager 
+{
+    height:32px;
+}
+.ui-jqgrid input[type='text'] {
+height: 17px !important;
+font-size: 12px;
+}
+.ui-jqgrid .ui-pg-selbox
+{
+    font-size:12px; 
+    height:20px;
+    width:60px; /* 2016-06-30 park.heesoo */
+}
+/*frozen style*/
+.ui-jqgrid-htable tr.aggrow th
+{
+    /*border-left:1px solid #eeeeee;*/
+    border-top:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
+    background-image:none;
+    background-color:#fff3ff;/*#f9f9ee;*/
+}
+.ui-jqgrid-hdiv.frozen-div
+{
+    overflow:hidden;
+    border-right:1px solid #aaaaaa;
+    border-bottom:0 none;
+}
+/*TD cell Edit*/
+.ui-jqgrid td input, .ui-jqgrid td select, .ui-jqgrid td textarea ,.ui-jqgrid td input:active
+{
+    line-height:17px;
+    border:0px;
+    outline: none;
+    margin:0px;
+}
+/*jqgrid gradient*/
+td .cellDiv 
+{
+    position:relative;
+    height:100%;
+    margin:0px;
+    border:1px solid #aaaaaa;
+    padding:0;
+}
+th .cellDiv
+{
+    position:relative;
+    height:100%;
+    margin:0px;
+    padding:0;
+}
+.cellTextRight
+{
+    position:relative;
+    margin-right:4px;
+    text-align:right;
+    float:right;
+}
+.celluline
+{
+    text-decoration:underline;
+    color:Blue;
+}
+
+.cellTextRight
+{
+    margin-top:0px;   
+}
+th.ui-state-default a.btn-link {
+  color: #0088cc;
+  text-decoration: underline;
+  background-color: transparent;
+}
+th.ui-state-default a.btn-link:hover {
+  color: #005580;
+  text-decoration: underline;
+  background-color: transparent;
+}
+td .gradient1{
+    /* fallback (Opera) */
+    background: #008AEF;
+    /* Mozilla: https://developer.mozilla.org/en/CSS/-moz-linear-gradient */
+    background: -moz-linear-gradient(left, #008AEF, white);
+    /* Chrome, Safari: http://webkit.org/blog/175/introducing-css-gradients/ */
+    background: -webkit-gradient(linear, left top, right top, from(#008AEF), to(white));
+    /* MSIE http://msdn.microsoft.com/en-us/library/ms532997(VS.85).aspx */
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#008AEF', EndColorStr='white', GradientType=1);
+    /*ie8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#008AEF', EndColorStr='white', GradientType=1)";
+    position: absolute; left: -2px; top:-5px; right: 2px; height:auto; float:left;
+}
+td .gradient2{
+    background: #63C384;
+    background: -moz-linear-gradient(left, #63C384 0%, white 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#63C384), to(white));
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#63C384', EndColorStr='white', GradientType=1);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#63C384', EndColorStr='white', GradientType=1)";
+    position: absolute; left: 0px; top:0px; right: 2px; height:18px; float:left;
+}
+td .gradient_r
+{
+    background-color: rgba(255,0,0,0.3);
+    background-color: #FF7474\9;
+    border-right:1px solid #dd6060;
+    /*
+    background: -moz-linear-gradient(left, #FF7474 0%, white 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#FF7474), to(white));
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FF7474', EndColorStr='white', GradientType=1);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FF7474', EndColorStr='white', GradientType=1)";
+    */
+    position: absolute; left: 0px; top:0px; right: 2px; height:inherit; float:left;
+}
+td .gradient_g
+{
+    background-color:rgba(90,255,90,0.5);
+    background-color: #77E691\9;
+    border-right:1px solid #00dd00;
+    /*
+    background: -moz-linear-gradient(left, #77E691 0%, white 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#77E691), to(white));
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#77E691', EndColorStr='white', GradientType=1);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#77E691', EndColorStr='white', GradientType=1)";
+    */
+    position: absolute; left: 0px; top:0px; right: 2px; height:inherit; float:left;
+}
+td .gradient_y
+{
+    background-color:rgba(250,250,90,0.5);
+    background-color: #FFFF6F\9;
+    border-right:1px solid #dddd00;
+    /*
+    background: -moz-linear-gradient(left, #FFFF6F 0%, white 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#FFFF6F), to(white));
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FFFF6F', EndColorStr='white', GradientType=1);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#FFFF6F', EndColorStr='white', GradientType=1)";
+    */
+    position: absolute; left: 0px; top:0px; right: 2px; height:inherit; float:left;
+}
+.someClass 
+{ 
+    background-color: rgba(225,225,225,0.1);/*#eeeef1;*/ 
+    background-color : #fdfdfd\9;
+    background-image: none; 
+}
+.td_readlonly
+{
+    background-color: rgba(220,220,220,0.2);
+    background-color : #f3f3f3\9;
+}
+.td_edior
+{
+    background-color: rgba(225,225,0,0.15);
+    background-color : #fffff3\9;
+}
+.ui-jqgrid-btable .success
+{
+    background-color:#46a546;
+}
+.ui-jqgrid-btable .error
+{
+    background-color:#c3325f;
+}
+.ui-jqgrid-btable .warning
+{
+    background-color:#ffc40d;
+}
+.ui-jqgrid-btable .info
+{
+    background-color:#049cdb;
+}

@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage_Popup.master.cs" Inherits="Master_MasterPage_Popup" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow-y: scroll; overflow-x: scroll">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%--<link href="../Common/StyleSheet/menu_assets.css" rel="stylesheet" type="text/css" />
+    <link href="../Common/StyleSheet/style.css" rel="stylesheet" type="text/css" />--%>
+    
+    <link rel="stylesheet" href="/Common/css/common.css" />
+    <link rel="stylesheet" href="/Common/css/sub.css" />
+    <link rel="stylesheet" href="/Common/css/jquery-ui.css" />
+
+    <script type="text/javascript" src="/Common/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Common/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Common/js/common.js"></script>
+    <script type="text/javascript">
+
+        //script
+        function ShowLoading() {
+            document.getElementById('divProgress').style.display = "";
+            return true;
+        }
+        function divProgressNone() {
+            document.getElementById('divProgress').style.display = 'none';
+        }
+
+    </script>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" style="min-width:920px;">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptLocalization="true" AsyncPostBackTimeout="1800" EnableScriptGlobalization="true">
+        </asp:ScriptManager>
+        
+        <table id="content" style="width: 100%;" cellspacing="0" cellpadding="0">
+            <tr>
+                <td style="vertical-align: top;">
+                    <table style="width: 100%;" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td style="padding-left: 10px; padding-right: 10px">
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+     
+    <div id="divProgress"  style="left:46%;position:absolute;top:50%;display:none;">
+        <img src="/Images/common/loading_4.gif" alt="" style="width:110px;height:110px;" />
+    </div>
+     
+    <%--<script src="/Common/JavaScript/AjaxUpdatePanel.js" type="text/javascript"></script>--%>
+
+</body>
+</html>
