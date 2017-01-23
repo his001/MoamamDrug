@@ -3,8 +3,8 @@ using System.Web;
 using System.Web.UI;
 using System.IO;
 
-using Retailtech.Lib;
-using Homeplus.Data.WebControls;
+using Moamam.Lib;
+using Moamam.Data.WebControls;
 
 
 /// <summary>
