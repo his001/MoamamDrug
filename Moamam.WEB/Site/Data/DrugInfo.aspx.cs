@@ -15,7 +15,7 @@ public partial class Site_Data_DrugInfo : BasePage
 {
     #region ###################
     const string _keyDrug = "eVISHo10RZetWdKPlTwtbOWvvDwj7WgmuKM%2BfGxCPTxD%2FRGXMeEnrf5hgizc26pIVBrL04e8mR4DdPDCEyHazw%3D%3D"; //의약품 낱알식별정보(DB) 서비스
-    const string _gPgRownum = "100";
+    const string _gPgRownum = "30";
     const string _gCurPgnum = "1";
     const string _keyDrugUrl = "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey=" + _keyDrug + "&numOfRows=" + _gPgRownum + "&pageNo=" + _gCurPgnum + "&entp_name=&item_name="; //의약품 낱알식별정보(DB) 서비스
     protected string sHTML = string.Empty;
@@ -239,7 +239,7 @@ public partial class Site_Data_DrugInfo : BasePage
 
     protected void btnSearchSvr_Click(object sender, EventArgs e)
     {
-        SetNaverXmlParseing(txt_ITEM_NAME.Text);   
+        SetNaverXmlParseing(txtSerchName.Text);   
 
         ////Response.Write("%BE%C6%BD%BA%C7%C7%B8%B0" + "<br/>");
         ////Response.Write(HttpContext.Current.Server.UrlDecode("%BE%C6%BD%BA%C7%C7%B8%B0") + "<br/>");
@@ -280,110 +280,6 @@ public partial class Site_Data_DrugInfo : BasePage
             xmlStr = wc.DownloadString(m_strFilePath);
         }
         //var xmlDoc = new XmlDocument();
-        //
-
-        #region 
-        
-        string strXml = @"
-<response>
-<header>
-<resultCode>00</resultCode>
-<resultMsg>NORMAL SERVICE.</resultMsg>
-</header>
-<body>
-<numOfRows>3</numOfRows>
-<pageNo>1</pageNo>
-<totalCount>16925</totalCount>
-<items>
-<item>
-<ITEM_SEQ>201502386</ITEM_SEQ>
-<ITEM_NAME>덱스트론정300밀리그램(덱시부프로펜디.씨.)</ITEM_NAME>
-<ENTP_SEQ>19610006</ENTP_SEQ>
-<ENTP_NAME>대화제약(주)</ENTP_NAME>
-<CHART>분홍색의장방형필름코팅정</CHART>
-<ITEM_IMAGE>http://drug.mfds.go.kr/html/item_image_download.jsp?docId=147427049111000046</ITEM_IMAGE>
-<PRINT_FRONT>D분할선T</PRINT_FRONT>
-<PRINT_BACK/>
-<DRUG_SHAPE>장방형</DRUG_SHAPE>
-<COLOR_CLASS1>분홍</COLOR_CLASS1>
-<COLOR_CLASS2/>
-<LINE_FRONT>-</LINE_FRONT>
-<LINE_BACK/>
-<LENG_LONG>15.3</LENG_LONG>
-<LENG_SHORT>7.7</LENG_SHORT>
-<THICK>5.3</THICK>
-<IMG_REGIST_TS>20150611</IMG_REGIST_TS>
-<CLASS_NO>01140</CLASS_NO>
-<CLASS_NAME>해열.진통.소염제</CLASS_NAME>
-<ETC_OTC_NAME>일반의약품</ETC_OTC_NAME>
-<ITEM_PERMIT_DATE>20150421</ITEM_PERMIT_DATE>
-<FORM_CODE_NAME>정제, 미분류</FORM_CODE_NAME>
-<MARK_CODE_FRONT_ANAL/>
-<MARK_CODE_BACK_ANAL/>
-<MARK_CODE_FRONT_IMG/>
-<MARK_CODE_BACK_IMG/>
-</item>
-<item>
-<ITEM_SEQ>201502393</ITEM_SEQ>
-<ITEM_NAME>유덱스캡슐</ITEM_NAME>
-<ENTP_SEQ>20050016</ENTP_SEQ>
-<ENTP_NAME>(주)한국팜비오</ENTP_NAME>
-<CHART>흰색의 분말을 함유한 상하부 흰색의 경질캡슐제</CHART>
-<ITEM_IMAGE>http://drug.mfds.go.kr/html/item_image_download.jsp?docId=147427049111000058</ITEM_IMAGE>
-<PRINT_FRONT>PB UD</PRINT_FRONT>
-<PRINT_BACK/>
-<DRUG_SHAPE>장방형</DRUG_SHAPE>
-<COLOR_CLASS1>하양</COLOR_CLASS1>
-<COLOR_CLASS2>하양</COLOR_CLASS2>
-<LINE_FRONT/>
-<LINE_BACK/>
-<LENG_LONG>19.2</LENG_LONG>
-<LENG_SHORT>6.7</LENG_SHORT>
-<THICK>7</THICK>
-<IMG_REGIST_TS>20150706</IMG_REGIST_TS>
-<CLASS_NO>03910</CLASS_NO>
-<CLASS_NAME>간장질환용제</CLASS_NAME>
-<ETC_OTC_NAME>전문의약품</ETC_OTC_NAME>
-<ITEM_PERMIT_DATE>20150422</ITEM_PERMIT_DATE>
-<FORM_CODE_NAME>경질 캡슐, 산제</FORM_CODE_NAME>
-<MARK_CODE_FRONT_ANAL/>
-<MARK_CODE_BACK_ANAL/>
-<MARK_CODE_FRONT_IMG/>
-<MARK_CODE_BACK_IMG/>
-</item>
-<item>
-<ITEM_SEQ>201502730</ITEM_SEQ>
-<ITEM_NAME>알레자이정(레보세티리진염산염)</ITEM_NAME>
-<ENTP_SEQ>20010024</ENTP_SEQ>
-<ENTP_NAME>(주)다산메디켐</ENTP_NAME>
-<CHART>흰색 또는 미황색의 타원형 필름코팅정</CHART>
-<ITEM_IMAGE>http://drug.mfds.go.kr/html/item_image_download.jsp?docId=147427065184100000</ITEM_IMAGE>
-<PRINT_FRONT>DM</PRINT_FRONT>
-<PRINT_BACK>LC</PRINT_BACK>
-<DRUG_SHAPE>타원형</DRUG_SHAPE>
-<COLOR_CLASS1>하양</COLOR_CLASS1>
-<COLOR_CLASS2/>
-<LINE_FRONT/>
-<LINE_BACK/>
-<LENG_LONG>8.2</LENG_LONG>
-<LENG_SHORT>4.4</LENG_SHORT>
-<THICK>2.5</THICK>
-<IMG_REGIST_TS>20150730</IMG_REGIST_TS>
-<CLASS_NO>01410</CLASS_NO>
-<CLASS_NAME>항히스타민제</CLASS_NAME>
-<ETC_OTC_NAME>전문의약품</ETC_OTC_NAME>
-<ITEM_PERMIT_DATE>20150501</ITEM_PERMIT_DATE>
-<FORM_CODE_NAME>필름코팅정</FORM_CODE_NAME>
-<MARK_CODE_FRONT_ANAL/>
-<MARK_CODE_BACK_ANAL/>
-<MARK_CODE_FRONT_IMG/>
-<MARK_CODE_BACK_IMG/>
-</item>
-</items>
-</body>
-</response>
-";
-        #endregion
 
         var DslstDrugInfo = new List<List<string>>();
 

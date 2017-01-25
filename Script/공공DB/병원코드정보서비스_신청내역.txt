@@ -1,0 +1,4 @@
+http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList?ServiceKey=eVISHo10RZetWdKPlTwtbOWvvDwj7WgmuKM%2BfGxCPTxD%2FRGXMeEnrf5hgizc26pIVBrL04e8mR4DdPDCEyHazw%3D%3D&numOfRows=100&pageNo=1
+
+-- 병원코드정보서비스
+eVISHo10RZetWdKPlTwtbOWvvDwj7WgmuKM%2BfGxCPTxD%2FRGXMeEnrf5hgizc26pIVBrL04e8mR4DdPDCEyHazw%3D%3D

@@ -416,3 +416,16 @@ function jsfn_getUserIP(onNewIP) { //  onNewIp - your listener function for new 
     };
 }
 
+function jsfn_getDrugInfo() {
+    var _url = '/Site/Data/DrugInfo.aspx';
+    $('#LyPop1').bPopup({
+        content: 'iframe',
+        //contentContainer: '.contentPop',
+        iframeAttr: 'scrolling="no" frameborder="0" width=550 height=450 background-color:#FFF ',
+        loadUrl: _url
+    });
+}
+function jsfn_btnPopExit() {
+    $('#LyPop1').bPopup().close();
+    $('.b-iframe').remove();
+}
