@@ -429,3 +429,13 @@ function jsfn_btnPopExit() {
     $('#LyPop1').bPopup().close();
     $('.b-iframe').remove();
 }
+
+function jsfn_SerchItemClick4PopUp(Item, ItemName) {
+    //--옵션 목록 처음에 추가	$("#sel_ChouBangYak").prepend("<option value='0'>옵션앞에추가</option>");
+    //--option 목록 끝에 추가	$("#sel_ChouBangYak").append("<option value='1'>옵션끝에 추가/option>");
+    //--[SelectBox 옵션 삭제]	$("#sel_ChouBangYak option:eq(10)").remove();
+
+    var _ItemName = ItemName.replace(/'/g, '').replace(/,/g, '');
+    $('#sel_ChouBangYak').append('<option value="' + Item + '">' + _ItemName + '</option>');
+    jsfn_btnPopExit();
+}

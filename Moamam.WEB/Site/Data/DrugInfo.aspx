@@ -75,9 +75,10 @@
 
         for (var i = 0; i < gData.length; i++) {
             html = html + '<tr class="tr_c">';
-            html = html + '<td class="t_c">' + gData[i].ITEM_SEQ + '</td>';
-            html = html + '<td style="color:blue;text-align:left;"><a href="javascript:parent.jsfn_SerchItemClick4PopUp(\'' + gData[i].ITEM_SEQ + '\',\'' + gData[i].ITEM_NAME + '\',\'' + gData[i].ENTP_SEQ + '\',\'' + gData[i].ENTP_NAME + '\');"> &nbsp;<asp:Label ID="lbLinkValue" runat="server" ForeColor="Blue"> ' + gData[i].ITEM_NAME + '</asp:Label></a></td>';
-            html = html + '<td class="t_c">' + gData[i].CHART + '</td>';
+            ////html = html + '<td class="t_c">' + gData[i].ITEM_SEQ + '</td>';
+            //html = html + '<td style="color:blue;text-align:left;"><a href="javascript:parent.jsfn_SerchItemClick4PopUp(\'' + gData[i].ITEM_SEQ + '\',\'' + gData[i].ITEM_NAME + '\',\'' + gData[i].ENTP_SEQ + '\',\'' + gData[i].ENTP_NAME + '\');"> &nbsp;<asp:Label ID="lbLinkValue" runat="server" ForeColor="Blue"> ' + gData[i].ITEM_NAME + '</asp:Label></a></td>';
+            html = html + '<td style="color:blue;text-align:left;color:blue;" title="' + gData[i].CHART + '"><a href="javascript:parent.jsfn_SerchItemClick4PopUp(\'' + gData[i].ITEM_SEQ + '\',\'' + gData[i].ITEM_NAME + '\');">' + gData[i].ITEM_NAME + '</a></td>';
+            //html = html + '<td class="t_c">' + gData[i].CHART + '</td>';
             html = html + '<td class="t_c">' + gData[i].CLASS_NAME + '</td>';
             html = html + '</tr>';
         }
@@ -141,14 +142,15 @@
 		            <!--<h2 class="tit">서브 타이틀</h2>-->
 		            <table id="dvGrid1">
                         <colgroup>
-                            <col style="width:100px;" />
                             <col />
+                            <col style="width:120px;" />
+                            <%--<col style="width:120px;" />--%>
                         </colgroup>
 			            <thead>
                         <tr>
-                            <th>순번</th>
+                            <%--<th>순번</th>--%>
                             <th>약이름</th>
-                            <th>성상</th>
+                            <%--<th>성상</th>--%>
                             <th>분류명</th>
                         </tr>
 			            </thead>
