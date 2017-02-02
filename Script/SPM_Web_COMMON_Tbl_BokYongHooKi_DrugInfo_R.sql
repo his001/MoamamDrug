@@ -12,8 +12,8 @@ CREATE PROC SPM_Web_COMMON_Tbl_BokYongHooKi_DrugInfo_R
 AS
 BEGIN
 
-	SELECT * 
-	FROM Tbl_BokYongHooKi_DrugInfo WITH(nolock) 
-	WHERE idx = @idx
+	SELECT A.seq, A.idx, A.ITEM_SEQ,B.ITEM_NAME, ITEM_MEMO, A.regdate, A.regid, A.regip 
+	FROM Tbl_BokYongHooKi_DrugInfo A WITH(nolock) join Tbl_DrugOrg_Info B WITH(NOLOCK) on A.ITEM_SEQ = B.ITEM_SEQ
+	WHERE idx = 1
 
 END

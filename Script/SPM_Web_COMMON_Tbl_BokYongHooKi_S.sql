@@ -6,9 +6,10 @@
 최종수정자  :
 최종수정일  :
 2017-01-06 @idx 추가로 수정 추가
+2017-02-02 idx return 하도록 변경
 exec SPM_Web_COMMON_Tbl_BokYongHooKi_S 
 ***********************************************************************************************/ 
-CREATE PROC SPM_Web_COMMON_Tbl_BokYongHooKi_S
+ALTER PROC SPM_Web_COMMON_Tbl_BokYongHooKi_S
 	@UserID		nvarchar(100)
 	,@VisitDate varchar(8)	--txt_Visit_Date
 	,@CureDate	varchar(8)	--txt_NoPain_Date
@@ -69,5 +70,13 @@ END
 ELSE
 BEGIN
 	COMMIT TRAN
-	SELECT 'OK' AS RESULT
+	IF @idx>0 
+	BEGIN
+		SELECT @idx AS RESULT
+	END
+	ELSE
+	BEGIN
+		SELECT MAX(idx) AS RESULT FROM Tbl_BokYongHooKi WITH(NOLOCK) WHERE UserID = @UserID
+	END
+	
 END

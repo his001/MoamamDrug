@@ -265,7 +265,20 @@ ex) 투세프건조시럽
 </textarea>
                                         <br />
                                         <a href="javascript:jsfn_getDrugInfo();">처방-약종류 불러오기</a><br />
-                                        <select id="sel_ChouBangYak" size="5" style="width:99%"></select>
+<select id="sel_ChouBangYak" size="5" style="width:99%"></select>
+<table id="dvGrid1Drug" style="min-width:600px;left:0;">
+<thead>
+    <tr style="height:35px;">
+<td style="color:white;"><b>ITEM_NAME</b></td>
+<td style="color:white;"><b>ITEM_MEMO</b></td>
+<td style="display:none;"><b>ITEM_SEQ</b></td>
+    </tr>
+</thead>
+    <tr>
+        <td colspan="3" style="width:100%;height:25px;text-align:center;"></td>
+    </tr>
+</table> 
+
                                     </div>
                                     <div class="field half first">
                                         <input type="text" id="txt_Yak_iLbun" maxlength="4" class="numericOnly" style="height:30px;" />

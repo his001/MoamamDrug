@@ -124,7 +124,7 @@
     <asp:HiddenField ID="hdnPassword" runat="server" />
 
 	<div class="style1">
-		<img src="/Images/Common/ADO_style1.png" alt="">
+		<%--<img src="/Images/Common/ADO_style1.png" alt="">--%>
 		<div class="input_aria">
 			<hpf:NTextBox ID="txtUserID" runat="server" TabIndex="1" CssClass="id_area b_x"></hpf:NTextBox>
 			<hpf:NTextBox ID="txtPassword" runat="server" AutoCompleteType="Disabled" TextMode="Password" TabIndex="2" CssClass="pwd_area b_x"></hpf:NTextBox>

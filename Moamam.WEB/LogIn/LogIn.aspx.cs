@@ -116,7 +116,7 @@ public partial class LogIn_LogIn : System.Web.UI.Page
             string errMsg       = "";
             //DataSet ds          = null;
             if (rtnUserInfo(id, pwd) == "loginSuccess") {
-                string strMenuUrl = "/index.html";
+                string strMenuUrl = "/Default.aspx";
                 Response.Redirect(strMenuUrl);
                 Response.End();
             }

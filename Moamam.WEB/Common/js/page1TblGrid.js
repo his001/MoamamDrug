@@ -1,4 +1,101 @@
-﻿function jsfn_Search() {
+﻿function jsfn_SaveDrug() {
+    var _txt_idx = $("#txt_idx").val();
+    if (_txt_idx == '') { return false; }
+
+    var _chkCt = 0;
+    var _jsuccessCnt = 0;
+    var index = 0;
+    var _gridDrug1_hdn_ITEM_SEQ = '';
+    var _gridDrug1_hdn_ITEM_MEMO = '';
+    $('input[type=checkbox][name="rpt1_chkBox"]').each(function () {
+        if ($(this).prop("checked")) {
+            _gridDrug1_hdn_ITEM_SEQ = $("input[name=gridDrug1_hdn_ITEM_SEQ]:eq(" + index + ")").val();
+            _gridDrug1_hdn_ITEM_MEMO = $("input[name=gridDrug1_hdn_ITEM_MEMO]:eq(" + index + ")").val();
+            _jsuccessCnt = _jsuccessCnt + jsfn_SaveBokYongDrug(_idx, _gridDrug1_hdn_ITEM_SEQ, _gridDrug1_hdn_ITEM_MEMO);
+        }
+        index++;
+    });
+}
+function jsfn_SaveBokYongDrug(_idx, _ITEM_SEQ, _ITEM_MEMO) {
+    var _successCnt = 0;
+
+    var _USERID = '<%=_regiD%>';
+    var _regip = '<%=_regip%>';
+    if (_idx == '') { return false; }
+    if (_ITEM_SEQ == '') { return false; }
+    if (_ITEM_MEMO == '') { return false; }
+
+    var SpName = "SPM_Web_COMMON_Tbl_BokYongHooKi_DrugInfo_S";
+    var SpParams = "idx" + '▥' + _idx + '▤';
+    SpParams = SpParams + "ITEM_SEQ" + '▥' + _ITEM_SEQ + '▤';
+    SpParams = SpParams + "ITEM_MEMO" + '▥' + _ITEM_MEMO + '▤';
+    SpParams = SpParams + "regip" + '▥' + _regip + '▤';
+    SpParams = SpParams + "userId" + '▥' + _USERID;
+
+    $.ajax({
+    url: '/Site/Data/Data.aspx'
+    ,type: "post"
+    ,async: false
+    ,data: {
+        fnName: "CommonCallSpGetJson"
+        ,SpName: SpName
+        ,SpParams: SpParams
+    }
+    , dataType: "json"
+    , success: function (data) { _successCnt = 1; }
+    , error: function (x, e) { jsfn_AjaxError(x, e); }
+    });
+    return _successCnt;
+}
+
+function jsfn_SearchDrug() {
+    var _txt_idx = $("#txt_idx").val();
+    if (_txt_idx == '') { return false; }
+    var SpName = "SPM_Web_COMMON_Tbl_BokYongHooKi_DrugInfo_R";
+    var SpParams = "idx▥" + _txt_idx;
+
+    $.ajax({
+        url: "/Site/Data/Data.aspx"
+    , type: "post"
+    , async: false
+    , data: {
+        fnName: "CommonCallSpGetJson"
+        , SpName: SpName
+        , SpParams: SpParams
+    }
+    , dataType: "json"
+    , success: function (data) { jsfn_SetGridDrug(data); }
+    , error: function (x, e) { jsfn_AjaxError(x, e); }
+    });
+}
+
+function jsfn_SetGridDrug(dataRes) {
+    $("#dvGrid1Drug > tbody > tr").remove();
+    var gData = dataRes;
+    var html = '';
+
+    if (gData.length == 0) {
+        var noData_html = '<tr><td colspan="4" style="width:100%;height:25px;text-align:center;"><b><font color="red">입력된 약정보가 없습니다.</font></b></td></tr>';
+        $('#dvGrid1Drug > tbody:last').append(noData_html);
+        return false;
+    }
+
+    for (var i = 0; i < gData.length; i++) {
+        if (gData[i].ITEM_SEQ == null) { gData[i].ITEM_SEQ = ''; }
+        if (gData[i].ITEM_NAME == null) { gData[i].ITEM_NAME = ''; }
+        if (gData[i].ITEM_MEMO == null) { gData[i].ITEM_MEMO = ''; }
+
+        html = html + '<tr class="tr_c">';
+        html = html + '<td class="t_c" style="text-align:center;"><input type="checkbox" id="rpt1_chkBox_' + i + '" name="rpt1_chkBox" checked="checked" disabled="disabled">' + gData[i].ITEM_NAME
+        html = html + '<input type="text" id="gridDrug1_hdn_ITEM_SEQ" name="gridDrug1_hdn_ITEM_SEQ" value="' + gData[i].ITEM_SEQ + '" style="display:none;"></td>';
+        html = html + '<td class="t_c" style="text-align:left;"><input type="text" id="gridDrug1_hdn_ITEM_MEMO" name="gridDrug1_hdn_ITEM_MEMO" value="' + gData[i].ITEM_MEMO + '"></td>';
+        html = html + '</tr>';
+    }
+    $('#dvGrid1Drug > tbody:last').append(html);
+    setTimeout("jsfn_progressBarMst('N');", 500);
+}
+
+function jsfn_Search() {
     var _txtUserID = $("#Login_userId").val();
     if (_txtUserID == '') { jsfn_alertClose("로그인이 필요합니다!"); return false; }
     var SpName = "SPM_Web_COMMON_Tbl_BokYongHooKi_R";
