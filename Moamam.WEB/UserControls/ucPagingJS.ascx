@@ -39,7 +39,7 @@
         var _endNo = _hidEndPage;
 
         var strHTMLSelPage = '';
-        strHTMLSelPage = strHTMLSelPage + '<select id="LyCus_selPageRowCnt" style="width:60px" onchange="jsfn_LyCus_selPageRowCnt(this.value);">';
+        strHTMLSelPage = strHTMLSelPage + '<select id="LyCus_selPageRowCnt" style="width:80px;padding:0 0 0 5px;" onchange="jsfn_LyCus_selPageRowCnt(this.value);">';
         if (_hidRowCnt == "30") { strHTMLSelPage = strHTMLSelPage + '<option value="30" selected>30행</option>'; } else { strHTMLSelPage = strHTMLSelPage + '<option value="30">30행</option>'; }
         if (_hidRowCnt == "50") { strHTMLSelPage = strHTMLSelPage + '<option value="50" selected>50행</option>'; } else { strHTMLSelPage = strHTMLSelPage + '<option value="50">50행</option>'; }
         if (_hidRowCnt == "100") { strHTMLSelPage = strHTMLSelPage + '<option value="100" selected>100행</option>'; } else { strHTMLSelPage = strHTMLSelPage + '<option value="100">100행</option>'; }
@@ -48,7 +48,7 @@
         $('#LyCus_PageLeftAreaSel').html(strHTMLSelPage);
         
 
-        var strHTMLPage = '';
+        var strHTMLPage = '<table style="width:100%;margin:0 0 0 0padding:0 0 0 0;"><tr><td style="height:25px;padding:10px 0 0 0;">';
         if (_hidPageNo == '1') {
             strHTMLPage = strHTMLPage + '<button type="button" class="start" OnClick="alert(\'첫 페이지입니다.\');" title="첫 페이지입니다."></button>';
         } else { strHTMLPage = strHTMLPage + '<button type="button" class="start" onclick="jsfn_Page_Url(' + _startNo + ');" title="' + _startNo + '페이지로 이동"></button>'; }
@@ -56,37 +56,49 @@
         if (_prevNo > 0) { strHTMLPage = strHTMLPage + '<button type="button" class="prev" onclick="jsfn_Page_Url(' + _prevNo + ');" title="' + _prevNo + '페이지로 이동"></button>'; } else {
             strHTMLPage = strHTMLPage + '<button type="button" class="prev" OnClick="alert(\'첫 페이지 그룹입니다.\');" title="첫 페이지 그룹입니다."></button>';
         }
-        strHTMLPage = strHTMLPage + '<p>';
+        strHTMLPage = strHTMLPage + '</td><td><p>';
 
         if (parseInt(parseInt(_hidPageNo) - 3) > 0) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) - 3) + ');">' + parseInt(parseInt(_hidPageNo) - 3) + '</a>&nbsp;'; }
         if (parseInt(parseInt(_hidPageNo) - 2) > 0) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) - 2) + ');">' + parseInt(parseInt(_hidPageNo) - 2) + '</a>&nbsp;'; }
         if (parseInt(parseInt(_hidPageNo) - 1) > 0) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) - 1) + ');">' + parseInt(parseInt(_hidPageNo) - 1) + '</a>&nbsp;'; }
 
-        strHTMLPage = strHTMLPage + '<b><a class="frst strong">' + _hidPageNo + '</a></b>&nbsp;';
+        strHTMLPage = strHTMLPage + '</td><td><b><a class="frst strong">' + _hidPageNo + '</a></b>&nbsp;</td><td>';
 
         if (parseInt(parseInt(_hidPageNo) + 1) <= _hidEndPage) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) + 1) + ');">' + parseInt(parseInt(_hidPageNo) + 1) + '</a>&nbsp;'; }
         if (parseInt(parseInt(_hidPageNo) + 2) <= _hidEndPage) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) + 2) + ');">' + parseInt(parseInt(_hidPageNo) + 2) + '</a>&nbsp;'; }
         if (parseInt(parseInt(_hidPageNo) + 3) <= _hidEndPage) { strHTMLPage = strHTMLPage + '<a href="#" onclick="jsfn_Page_Url(' + parseInt(parseInt(_hidPageNo) + 3) + ');">' + parseInt(parseInt(_hidPageNo) + 3) + '</a>&nbsp;'; }
 
-        strHTMLPage = strHTMLPage + '</p>';
+        strHTMLPage = strHTMLPage + '</p></td><td>';
         strHTMLPage = strHTMLPage + '<button type="button" class="next" onclick="jsfn_Page_Url(' + _nextNo + ');" title="' + _nextNo + '페이지로 이동"></button>';
         strHTMLPage = strHTMLPage + '<button type="button" class="end" onclick="jsfn_Page_Url(' + _endNo + ');" title="' + _endNo + '페이지로 이동"></button>';
         
+        strHTMLPage = strHTMLPage + '</td></tr></table>';
         $('#LyCus_PageArea').html(strHTMLPage);
     }
 </script>
 <div class="pager"> 
+    <table style="width:100%">
+        <tr>
+            <td>
     <div id="LyCus_PageLeftArea" class="page_view f_l" style="padding:8px 0 0 12px;">
         <span id="LyCus_PageLeftAreaSel" style="width:100px;height:33px;text-align:center;vertical-align:middle;"></span>
     </div>
+            </td>
+            <td style="height:31px">
 	<div class="paging p_a" id="LyCus_PageArea">
 		
 	</div>
+            </td>
+            <td>
 	<div class="page_view f_r">
 		<span id="LyCus_lblCount" style="display:inline-block;border-color:#000000;border-style:None;">
             Total 0 건
 		</span>
 	</div>
+
+            </td>
+        </tr>
+    </table>
 
 	<input type="hidden" id="LyCus_hidPageNo" value="1" onchange="jsfn_reDrawPaging();">
     <input type="hidden" id="LyCus_hidRowCnt" value="30">

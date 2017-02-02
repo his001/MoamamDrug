@@ -1,0 +1,275 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drugs">
+<meta property="og:description" content="처방전 기록보관 History">
+<meta property="og:image" content="http://Drugs.or.kr/Images/logoNew05-300x64.gif">
+<meta property="og:url" content="http://Drugs.or.kr">
+
+<title>Drugs</title>
+<link rel="stylesheet" href="http://Drugs.or.kr/theme/typeA/css/mobile.css">
+<link rel="stylesheet" href="http://Drugs.or.kr/theme/typeA/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://Drugs.or.kr/theme/typeA/css/jquery.bxslider.css">
+<link rel="stylesheet" href="http://Drugs.or.kr/theme/typeA/css/font-awesome.css" >
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="http://Drugs.or.kr/theme/typeA/js/html5shiv.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/respond.min.js"></script>
+<![endif]-->
+<script src="http://Drugs.or.kr/theme/typeA/js/jquery.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/common.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/wrest.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/bootstrap.min.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/jquery.bxslider.min.js"></script>
+<script src="http://Drugs.or.kr/theme/typeA/js/modernizr.custom.70111.js"></script>
+
+</head>
+<body>
+<center>
+<div id="ly_bgLayer" style="width:100%; min-width: 320px; max-width:640px; overflow: hidden;">
+<header id="hd">
+	<h1 id="hd_h1">Drugs</h1>
+	<div class="to_content"><a href="#container">본문 바로가기</a></div>
+
+	<!-- 팝업레이어 시작 { -->
+	<div id="hd_pop">
+		<h2>팝업레이어 알림</h2>
+		<span class="sound_only">팝업레이어 알림이 없습니다.</span>
+	</div>
+	<script>
+	$(function() {
+		$(".hd_pops_reject").click(function() {
+			var id = $(this).attr('class').split(' ');
+			var ck_name = id[1];
+			var exp_time = parseInt(id[2]);
+			$("#"+id[1]).css("display", "none");
+			set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
+		});
+		$('.hd_pops_close').click(function() {
+			var idb = $(this).attr('class').split(' ');
+			$('#'+idb[1]).css('display','none');
+		});
+	});
+	</script>
+
+	<h2>최상단 고정 카테고리</h2>
+	<!-- 상단 기본 고정 메뉴 -->
+	<ul class="hd_top_nav">
+		<li><a href="http://Drugs.or.kr/bbs/register.php" id="snb_join"><i class="fa fa-certificate"></i> 회원가입</a></li>
+		<li><a href="http://Drugs.or.kr/bbs/login.php" id="snb_login"><i class="fa fa-sign-in"></i> 로그인</a></li>
+	</ul>
+	<!-- 로고 -->
+	<div class="logo text-center">
+		<a href="http://Drugs.or.kr"><img src="/img/logoNew05-300x64.gif" style="width:300px;height:64px !important;" alt="Drugs"></a>
+	</div>
+	<!-- 모바일 메뉴 버튼 -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<!-- 메뉴바 -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="container" style="width:100%; min-width: 320px; max-width:640px; overflow: hidden; !mportant;">
+			<ul id="gnb_1dul" class="nav navbar-nav text-center">
+				<li class="dropdown gnb_1dli">
+					<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_notice" target="_self" class="gnb_1da">공지사항</a>
+				</li>
+				<li class="dropdown gnb_1dli">
+					<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_cowork" target="_self" class="gnb_1da">협력업체</a>
+				</li>
+				<li class="dropdown gnb_1dli">
+					<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_hospital" target="_self" class="gnb_1da">협력병의원</a>
+				</li>
+				<li class="dropdown gnb_1dli">
+					<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_reference" target="_self" class="gnb_1da">레퍼런스</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 디바이스 변동시 바뀌는 메뉴 -->
+		<ul id="device_auto" class="nav navbar-nav">
+			<li class="active dropdown">
+				<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_notice" target="_self" class="gnb_1da">공지사항</a>
+				<button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-angle-down fa-fw"></i> <span class="sound_only">분류보기</span></button>
+			</li>
+			<li class="active dropdown">
+				<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_cowork" target="_self" class="gnb_1da">협력업체</a>
+				<button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-angle-down fa-fw"></i> <span class="sound_only">분류보기</span></button>
+			</li>
+			<li class="active dropdown">
+				<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_hospital" target="_self" class="gnb_1da">협력병의원</a>
+				<button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-angle-down fa-fw"></i> <span class="sound_only">분류보기</span></button>
+			</li>
+			<li class="active dropdown">
+				<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_reference" target="_self" class="gnb_1da">레퍼런스</a>
+				<button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-angle-down fa-fw"></i> <span class="sound_only">분류보기</span></button>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+    </div>
+</header>
+
+<div id="wrapper" style="width:100%; min-width: 320px; max-width:640px; overflow: hidden;">
+	<div id="aside">
+	</div>
+	<div id="container">
+
+<!-- 메인배너 { -->
+<section id="sbn_idx" class="sbn">
+	<!-- <h2>메인 배너</h2> -->
+	<ul class="bxslider">
+		<li>
+			<br/><br/><br/><br/><br/><br/>
+			<center><a href="http://mcube.Drugs.or.kr"><font style="font-size:36px;">엠큐브	방화벽, 문서보안, 터보백신, 랜섬차단	복찬규 대표	010-3371-2943</font></a></center>
+			<br/><br/><br/><br/><br/><br/>
+		</li>
+
+		<li>
+			<br/><br/><br/><br/><br/><br/>
+			<center><a href="/bbs/board.php?bo_table=bbs_cowork"><font style="font-size:36px;">협력업체</font></a></center>
+			<br/><br/><br/><br/><br/><br/>
+		</li>
+		<li>
+			<br/><br/><br/><br/><br/><br/>
+			<center><a href="/bbs/board.php?bo_table=bbs_reference"><font style="font-size:36px;">레퍼런스</font></a></center>
+			<br/><br/><br/><br/><br/><br/>
+		</li>
+		<!--<li>
+			<center>
+			<a href="http://Drugs.or.kr/bbs/content.php?co_id=company">
+				<img src="/img/DrugsMa.jpg" alt="회사소개" style="width:480;height:360 !important;" />
+			</a>
+			</center>
+		</li>-->
+	</ul>
+</section>
+<script>
+$('.bxslider').bxSlider({
+	auto: true,
+	autoControls: true
+});
+</script>
+<!-- } 메인배너 -->
+
+<section id="idx_ct">
+<center>
+	<div id="idx_m1" >
+		<div style="background:#aea18c !important">
+			<!-- 공지사항 -->
+			<div style="text-align:left !important;">
+			
+			<div class="lt">
+				<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_notice" class="lt_title"><strong>공지사항</strong></a>
+				<ul>
+					<li>
+						<a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_notice&amp;wr_id=4"><strong>연예인 초청 자선 골프대회</strong>  <img src="http://Drugs.or.kr/theme/typeA/css/images/icon_hot.gif" alt="인기글"> <img src="http://Drugs.or.kr/theme/typeA/css/images/icon_file.gif" alt="첨부파일">  </a>
+					</li>
+				</ul>
+				<div class="lt_more"><a href="http://Drugs.or.kr/bbs/board.php?bo_table=bbs_notice"><span class="sound_only">공지사항</span>더보기</a></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 매장안내 -->
+		<div style="padding:20px 5px; 5px; 20px;background:#aea18c !important;">
+			<strong>회사위치</strong>
+			<div id="lyMapIn" style="padding:5px 5px; 5px; 5px;">
+			<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25327.35107282588!2d126.76923360458213!3d37.48624051158271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b62d225421493%3A0x6d7e233b2f52dfe9!2z6rK96riw64-EIOu2gOyynOyLnCDsm5Drr7jqtawg67aA7J2866GcNTA167KI6ri4IDIy!5e0!3m2!1sko!2skr!4v1476794513750" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+			</div>
+		</div>
+	</div>
+</center>
+</section>
+
+
+	</div>
+</div>
+<hr>
+
+<hr>
+<div id="ft" style="width:100%; min-width: 320px; max-width:640px; overflow: hidden;">
+	<div id="ft_info">
+		<div id="ft_company" class="col-xs-6 col-sm-6 col-md-3 ft_div" style="width:50% !important;">
+			<h2>회사정보</h2>
+			<p class="ft_info" style="font-size:11px;">
+			<br>Email:<a href="mailto:Drugs30@naver.com">Drugs30@naver.com</a>
+			<br>사업자등록번호:
+			<br> 개인정보관리책임자:<a href="tel:010-1111-1111" target="_blank">홍길동</a></p>
+		</div>
+		<div id="ft_link" class="col-xs-6 col-sm-6 col-md-3 ft_div" style="width:50% !important;">
+			<h2>링크 바로가기</h2>
+			<ul>
+				<li><a href="http://Drugs.or.kr/bbs/content.php?co_id=company">회사소개 <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="http://Drugs.or.kr/bbs/content.php?co_id=privacy">개인정보취급방침  <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="http://Drugs.or.kr/bbs/content.php?co_id=provision">서비스이용약관  <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="http://Drugs.or.kr/bbs/content.php?co_id=contact">찾아오시는 길 <i class="fa fa-angle-right"></i></a></li>
+			</ul>  
+		</div>
+		<div id="ft_search" class="col-xs-6 col-sm-6 col-md-3 ft_div" style="width:50% !important;">
+		</div>
+		<div id="ft_customer" class="col-xs-6 col-sm-6 col-md-3 ft_div"  style="font-size:11px;width:50% !important;">
+			<p class="ft_info" style="font-size:14px;">고객센터</p>
+			<span  style="font-size:11px;">032-719-2145 <br/>월~금 09:30 ~ 18:30 <!-- (토/일/공휴일휴무) --></span>
+			<ul class="ft_sns">
+				<li><a href="https://www.facebook.com/DrugsGroup" target="_blank"><i class="fa fa-2x fa-facebook-square"></i></a></li>
+				<!--<li><a href="https://twitter.com/" target="_blank"><i class="fa fa-2x fa-twitter-square"></i></a></li>
+				<li><a href="https://www.google.co.kr/?gws_rd=ssl" target="_blank"><i class="fa fa-2x fa-google-plus-square"></i></a></li>
+				<li><a href="http://instagram.com/" target="_blank"><i class="fa fa-2x fa-instagram"></i></a></li>-->
+			</ul>
+		</div>
+	</div>
+	<div id="ft_copy" class="col-lg-12 text-center">
+		Copyright &copy; <b>Drugs.or.kr</b> All rights reserved.<button id="top_btn"><span class="sound_only">상단으로</span><i class="fa fa-arrow-up"></i></button>
+	</div>
+</div>
+</div>
+</center>
+<script>
+$(function() {
+	$("#top_btn").on("click", function() {
+		$("html, body").animate({scrollTop:0}, '500');
+		return false;
+	});
+});
+</script>
+
+<script>
+$(function() {
+	// 폰트 리사이즈 쿠키있으면 실행
+	font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+});
+</script>
+
+
+<!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
+<!--[if lte IE 7]>
+<script>
+$(function() {
+	var $sv_use = $(".sv_use");
+	var count = $sv_use.length;
+
+	$sv_use.each(function() {
+		$(this).css("z-index", count);
+		$(this).css("position", "relative");
+		count = count - 1;
+	});
+});
+</script>
+<![endif]-->
+
+</body>
+</html>

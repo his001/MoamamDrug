@@ -18,8 +18,7 @@ namespace Moamam.Lib
     {
         public static string getDbConstr()
         {
-            //string _conStr = @"server=FLEX3\MSSQL2014; database=moamam; uid=moamam; pwd=gkgk1234";
-			string _conStr = @"server=localhost; database=moamam; uid=moamam; pwd=gkgk1234";
+            string _conStr = @"server=drugs.or.kr; database=drugsave; uid=drugsave; pwd=Skgmltn1@";
             return _conStr;
         }
 

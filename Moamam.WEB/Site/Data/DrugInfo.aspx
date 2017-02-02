@@ -99,10 +99,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentMain" Runat="Server">
 <article id="grid">
-    <table class="PopupTabelTitle" cellpadding="0" cellspacing="0">
+    <table class="PopupTabelTitle">
         <tr>
-            <td class="Popup_td" style="background-color:#003399;border:0;">&nbsp;제약품 검색</td>
-            <td class="t_r" style="padding:0;margin:0;background-color:#003399;border:0;">
+            <td class="Popup_td" style="background-color:#222528;border:0;">&nbsp;제약품 검색</td>
+            <td class="t_r" style="padding:0;margin:0;background-color:#222528;border:0;">
                 <img ID="btnTsfCancel1" style="height:20px;vertical-align:middle;cursor:pointer;" src="/Images/Common/grn_pp_cls_btn_over.png" OnClick="jsfn_PopClose();"  />
             </td>
 
@@ -126,9 +126,9 @@
                     <option value="FORM_CODE_NAME">제형코드이름</option>
                 </select>
                 <asp:TextBox ID="txtSerchName" runat="server" CssClass="input hangleDefault" style="width:200px;height:30px;" AutoPostBack="false" onkeydown = "return (event.keyCode!=13);" ></asp:TextBox> 
-                <input type="button" ID="btnSearch" class="btn btn_inquiry" value="조회" style="cursor:pointer;" />
+                <input type="button" ID="btnSearch" class="btn btn_inquiry" value="조회" style="cursor:pointer;background-color:#202225;" />
                 &nbsp;&nbsp;
-                <asp:Button ID="btnSearchSvr" CssClass="btn btn_inquiry" Text="외부에서 가져오기" style="cursor:pointer;" runat="server" title="조회결과 없을때 해당약을 가져오는 기능입니다." OnClick="btnSearchSvr_Click" />
+                <asp:Button ID="btnSearchSvr" CssClass="btn btn_inquiry" Text="외부에서 가져오기" style="cursor:pointer;background-color:#202225;" runat="server" title="조회결과 없을때 해당약을 가져오는 기능입니다." OnClick="btnSearchSvr_Click" />
 		    </div>
 	    </div>
     </article>

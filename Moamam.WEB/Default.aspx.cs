@@ -6,8 +6,8 @@ public partial class _Default : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            SessionAuth.LogoutProcess();
-            Response.Redirect("~/LogIn/LogIn.aspx");
+            //SessionAuth.LogoutProcess();
+            //Response.Redirect("~/LogIn/LogIn.aspx");
         }
     }
 }

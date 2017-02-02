@@ -4,11 +4,13 @@
 생성일      : 2017-01-05
 로직        : 
 최종수정자  : 
-최종수정일  : 
+최종수정일  : 2017-02-01
 exec SPM_Web_COMMON_Tbl_BokYongHooKi_R @UserID='his001'
 ***********************************************************************************************/ 
-CREATE PROC [DBO].[SPM_Web_COMMON_Tbl_BokYongHooKi_R]
+ALTER PROC [DBO].[SPM_Web_COMMON_Tbl_BokYongHooKi_R]
 	@UserID	NVARCHAR(100)  =''
+	,@ROWCNT INT = 30
+	,@PAGENUM INT = 1
 AS
 BEGIN
 	--SELECT * FROM (
@@ -21,14 +23,19 @@ BEGIN
 	--		--AND B.SUP_TERM_ID LIKE '%'+ISNULL(@RUD_ID,'')+'%'
 	--) T
 	--WHERE T.PAGE=@PAGENUM
-
-	SELECT 
-		idx, UserID, VisitDate, CureDate, JungSang, 
-		tempC, Feber, HaeYeolJe, ChouBang, Yak_iLbun, 
-		HangSaengJeBokan, HangSaengJeEat, ChamGoSaHang, BokYongHooKi, regdate, 
-		regid, regip, moddate, modid, modip
-	FROM Tbl_BokYongHooKi with(nolock)
-	WHERE @UserID like '%'+ISNULL(@UserID,'')+'%'
-	ORDER BY idx DESC
+	SELECT * FROM 
+	(
+		SELECT 
+			FLOOR((ROW_NUMBER() OVER (ORDER BY idx DESC) - 1) / @ROWCNT + 1) PAGE
+			, COUNT(*) OVER() AS TOTAL_COUNT
+			, idx, UserID, VisitDate, CureDate, JungSang, 
+			tempC, Feber, HaeYeolJe, ChouBang, Yak_iLbun, 
+			HangSaengJeBokan, HangSaengJeEat, ChamGoSaHang, BokYongHooKi, regdate, 
+			regid, regip, moddate, modid, modip
+		FROM Tbl_BokYongHooKi with(nolock)
+		WHERE @UserID like '%'+ISNULL(@UserID,'')+'%'
+		--ORDER BY idx DESC
+	) T
+	WHERE T.PAGE=@PAGENUM
 END
 

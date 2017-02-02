@@ -5,6 +5,72 @@
     <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title>Auto Depot Order</title>
     <link rel="stylesheet" href="/Common/css/common.css" />
+    <style>
+    /* ############## 그리드 헤더 고정용 ############## */
+    .gblTblFixArea {
+        border: 1px solid #000;
+        position: relative;
+        padding-top: 32px; /* gblTblFixHeader height값 */
+    }
+
+    .gblTblFixHeader {
+        height: 35px; /* gblTblFixHeader height값 */
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color:#f6f6f6;
+    }
+
+    .gblTblFixContent {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .gblTblFixHdTxt {
+        border: 1px solid #cccccc;
+        position: absolute;
+        top: 0;
+        width: inherit;
+        line-height: 42px; /* gblTblFixHeader height값 */
+        background-color:#f6f6f6;
+        text-align:center;
+    }
+
+    /* ############## 2열 그리드 헤더 고정용 ############## */
+    .gblTblFixArea2row {
+        border: 1px solid #000;
+        position: relative;
+        padding-top: 64px; /* gblTblFixHeader height값 */
+    }
+
+    .gblTblFixHeader2row {
+        height: 70px; /* gblTblFixHeader height값 */
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color:#f6f6f6;
+    }
+
+    .gblTblFixContent2row {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    .gblTblFixHdTxt2row {
+        border: 1px solid #cccccc;
+        position: absolute;
+        top: 0;
+        width: inherit;
+        line-height: 72px; /* gblTblFixHeader height값 */
+        background-color:#f6f6f6;
+        text-align:center;
+    }
+
+    </style>
     <link rel="stylesheet" href="/Common/css/sub.css" />
     <link rel="stylesheet" href="/Common/css/jquery-ui.css" />
     <script type="text/javascript" src="/Common/js/jquery-1.11.3.min.js"></script>
@@ -12,6 +78,8 @@
     <script type="text/javascript" src="/Common/js/nTextBox.js"></script>
     <script type="text/javascript" src="/Common/js/common.js"></script>
     <script type="text/javascript">
+        var _Global_UserGroup = '<%=SessionAuth.GetUserInfo(Moamam.Data.Common.UserInfoType.UserGroupCode).ToString()%>';
+
         function jsfn_progressBarMst(str) {
             if (str == 'Y') {
                 $('#divProgress4Mstjs').css("display", "block");
@@ -19,8 +87,28 @@
                 $('#divProgress4Mstjs').css("display", "none");
             }
         }
+        function jsfn_G_BtnChkAuth(strId) {
+            if (_Global_UserGroup != '1'&&_Global_UserGroup != '2') {
+                var arr_btn_id = strId.split('|');
+                for (var i = 0; i < arr_btn_id.length; i++) {
+                    var str_btn_id = arr_btn_id[i];
+                    $("#" + str_btn_id).css('display', 'none');
+                }
+            }
+        }
+        function jsfn_G_ShowChkAuth() {
+            if (_Global_UserGroup != '1' && _Global_UserGroup != '2') {
+                jsfn_alertClose('리포트 권한으로는 조회가 불가능 합니다.');
+                return false;
+            } else {
+                return true;
+            }
+        }
         // readonly 의 배경색상을 변경
         $(document).ready(function () {
+            jsfn_setScreenHeight();
+            jsfn_setTopMenuChkGlobal();
+            jsfn_G_BtnChkAuth('btnUpload|btnAddITEM|btnPop1Save|btnPop1Delete');
             $('form input[type="text"]').each(function (i, e) {
                 if ($(e).attr('readonly') == 'readonly') {
                     $(e).css('background-color', '#EBEBE4');
@@ -32,7 +120,7 @@
             try {
                 var _ExcelLimiteCnt = $("#LyCus_hidTotal").val();
                 if (_ExcelLimiteCnt > 50000) {
-                    alert('엑셀 다운로드는 최대 5만건까지만 다운 로드 가능합니다.');
+                    jsfn_alert('엑셀 다운로드는 최대 5만건까지만 다운 로드 가능합니다.');
                     _rtn = false;
                 }
             } catch (e) {
@@ -60,22 +148,18 @@
             var _SearchArea = "120";
             var _ContHeader = "30";
             var _Show_contHeight = window.screen.height - parseInt(_topMenu) - parseInt(_SearchArea) - parseInt(_ContHeader);
-            //alert(window.screen.height + ' : window.screen.height / ' + _Show_contHeight + ' : _Show_contHeight ');
-            if (window.screen.height == 768) { $("#Ly_grid1Scroll").css('height', '355px'); }
-            else if (window.screen.height == 1080) { $("#Ly_grid1Scroll").css('height', '630px'); }
+            if (window.screen.height == 768) { $("#Ly_grid1Scroll").css('height', '335px'); }
+            else if (window.screen.height == 1080) { $("#Ly_grid1Scroll").css('height', '600px'); }
             else if (parseInt(_Show_contHeight) > 500) {
                 $(".content_aria").css('height', _Show_contHeight + 'px');
             } else {
                 $(".content_aria").css('height', _Show_contHeight + 'px');
             }
         }
-        $(document).ready(function () {
-            jsfn_setScreenHeight();
-            jsfn_setTopMenuChkGlobal();
-        });
+
         function jsfn_setTopMenuChkGlobal(){
             var _G_GlobalMenuChk = $("#hdnGlobalMenuChk", parent.document).val();
-            if (_G_GlobalMenuChk != '1') { parent.document.location.href = '/Site/Blank.aspx'; }
+            if (_G_GlobalMenuChk != '1') { parent.document.location.href = '/Site/Blank.aspx?G=<%=Session["groupCd"]%>&M=<%=Session["menuCd"]%>'; }
         }
     </script>
      
@@ -129,7 +213,6 @@
                  close: function () { console.log("toast is closed ..."); }
              });
          }
-
      </script>
     <asp:ContentPlaceHolder ID="ContentHead" runat="server"></asp:ContentPlaceHolder>
     <%--
@@ -143,7 +226,6 @@
     <div id="divProgress4Mstjs" class="dvProgressMst" style="position:absolute;top:50%;left:46%;z-index:999;width:110px;height:110px;display:none;"><img src="/Images/common/loading_4.gif" alt="" style="width:110px;height:110px;"></div>
     <asp:ContentPlaceHolder id="ContentMain" runat="server">
     </asp:ContentPlaceHolder>
-	
 </form>
 </body>
 </html>
