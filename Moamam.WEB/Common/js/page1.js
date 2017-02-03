@@ -322,7 +322,8 @@ function jsfn_Pop1SaveSuccess(idx) {
     var _txt_idx = $("#txt_idx").val(idx);
     jsfn_SaveBokYongDrug();
     jsfn_alertClose('저장 되었습니다.');
-    document.location.replace = '#Lysec_BokYongHooKi_Write';
+    //document.location.replace = '#Lysec_BokYongHooKi_Write';
+    jsfn_GotoLayerTBL('Lysec_BokYongHooKi_LstGrid');
 }
 
 
@@ -471,4 +472,12 @@ function jsfn_SerchItemClick4PopUp(Item, ItemName) {
         $('#dvGrid1Drug > tbody:last').append(html);
     }
     jsfn_btnPopExit();
+}
+
+function jsfn_progressBarMst(str) {
+    if (str == 'Y') {
+        $('#divProgress4Mstjs').css("display", "block");
+    } else {
+        $('#divProgress4Mstjs').css("display", "none");
+    }
 }

@@ -47,8 +47,8 @@
 						<nav>
 							<ul>
                                 <!--<li><a href="#intro"><span id="LyLoginID">처음오셨나요?</span></a></li>-->
-                                <li><a href="#Lysec_BokYongHooKi_Write">복용 후기</a></li>
-                                <li><a href="#Lysec_BokYongHooKi_LstGrid">투약정보</a></li>
+                                <li><a href="#Lysec_BokYongHooKi_LstGrid">복용 후기 목록</a></li>
+                                <li><a href="#Lysec_BokYongHooKi_Write">복용 후기 작성</a></li>
                                 <li><a href="#contact">투약의뢰서</a></li>
 							</ul>
 						</nav>
@@ -144,9 +144,9 @@
 </div>
 						</article>
 
-						<!-- Lysec_BokYongHooKi_Write 복용 후기 -->
-                        <article id="Lysec_BokYongHooKi_Write" style="width:100%;">
-                            <h2 class="major">복용 후기</h2>
+						<!-- Lysec_BokYongHooKi_LstGrid 복용 후기 리스트 -->
+                        <article id="Lysec_BokYongHooKi_LstGrid" style="width:100%;">
+                            <h2 class="major">복용 후기 목록</h2>
                             <div id="LyBtnGrdSearch" style="text-align:right;padding:0 15px 15px 0;"><input type="button" id="btnSearch" class="btn btn_inquiry" value="조회" style="cursor:pointer;" onclick="jsfn_Search();" /></div>
                             <div id="jqGrid">
 <!-- List Start -->
@@ -178,14 +178,11 @@
                             </div>
                         </article>
 
-						<!-- 투약정보 -->
-                        <article id="Lysec_BokYongHooKi_LstGrid">
-                            <h2 class="major">투약정보</h2>
+						<!-- 복용 후기 쓰기 Lysec_BokYongHooKi_Write -->
+                        <article id="Lysec_BokYongHooKi_Write">
+                            <h2 class="major">복용 후기 작성</h2>
                             <!--<span class="image main"><img src="images/pic03.jpg" alt="" /></span>-->
                             <div class="content box style2">
-                                <header>
-                                    <h2>복용 후기</h2>
-                                </header>
 
                                 <div class="row">
                                     <div class="field half first">방문날짜</div>
@@ -426,7 +423,8 @@ XX 어린이집(유아/유치원)에
         });
         //#########################################
     </script>
-    <input type="hidden" id="Login_userId">
+    <input type="hidden" id="Login_userId"/>
+    <div id="divProgress4Mstjs" class="dvProgressMst" style="position:absolute;top:50%;left:46%;z-index:999;width:110px;height:110px;display:none;"><img src="/Images/common/loading_4.gif" alt="" style="width:110px;height:110px;"></div>
     </form>
 </body>
 </html>

@@ -15,6 +15,7 @@
         index++;
     });
 }
+
 function jsfn_SaveBokYongDrugDtl(_idx, _ITEM_SEQ, _ITEM_MEMO) {
     var _txtUserID = $("#Login_userId").val();
     var _txt_Userip = $("#txt_Userip").text();
@@ -142,6 +143,8 @@ function jsfn_SetGrid(dataRes) {
     var _txt_ChamGoSaHang = '';
     var _txt_BokYongHooKi = '';
     var _txt_JngSang = '';
+    var _rdoHangSaengJeBokan = '';
+    var _rdoHangSaengJeEat = '';
 
     for (var i = 0; i < gData.length; i++) {
 
@@ -159,6 +162,7 @@ function jsfn_SetGrid(dataRes) {
 
         _txt_idx = ''; _txt_Visit_Date = ''; _txt_NoPain_Date = ''; _txt_tempC = ''; _rdoFeber = ''; _HaeYeolJeOX = '';
         _txt_ChouBang = ''; _txt_Yak_iLbun = ''; _txt_ChamGoSaHang = ''; _txt_BokYongHooKi = ''; _txt_JngSang = '';
+        _rdoHangSaengJeBokan = '';_rdoHangSaengJeEat = '';
 
         _txt_idx = gData[i].idx;
         _txt_Visit_Date = gData[i].VisitDate;
@@ -177,9 +181,12 @@ function jsfn_SetGrid(dataRes) {
         _txt_BokYongHooKi = escape(_txt_BokYongHooKi.replace(/\n/g, '<br/>').replace(/'/g, '`'));
         _txt_JngSang = escape(_txt_JngSang.replace(/\n/g, '<br/>').replace(/'/g, '`'));
 
+        _rdoHangSaengJeBokan = gData[i].HangSaengJeBokan;
+        _rdoHangSaengJeEat = gData[i].HangSaengJeEat;
+
         html = html + '<tr class="tr_c">';
         html = html + '<td class="t_c" style="text-align:center;">' + gData[i].idx + '</td>';
-        html = html + '<td class="t_c" style="text-align:center;"><a href="javascript:jsfn_showToYakInfo(""' + _txt_idx + '"",""' + _txt_Visit_Date + '"",""' + _txt_NoPain_Date + '"",""' + _txt_tempC + '"",""' + _rdoFeber + '"",""' + _HaeYeolJeOX + '"",""' + _txt_ChouBang + '"",""' + _txt_Yak_iLbun + '"",""' + _txt_ChamGoSaHang + '"",""' + _txt_BokYongHooKi + '"",""' + _txt_JngSang + '"");">' + gData[i].VisitDate + '</a></td>';
+        html = html + '<td class="t_c" style="text-align:center;"><a href="javascript:jsfn_showToYakInfo(\'' + _txt_idx + '\',\'' + _txt_Visit_Date + '\',\'' + _txt_NoPain_Date + '\',\'' + _txt_tempC + '\',\'' + _rdoFeber + '\',\'' + _HaeYeolJeOX + '\',\'' + _txt_ChouBang + '\',\'' + _txt_Yak_iLbun + '\',\'' + _txt_ChamGoSaHang + '\',\'' + _txt_BokYongHooKi + '\',\'' + _txt_JngSang + '\',\'' + _rdoHangSaengJeBokan + '\',\'' + _rdoHangSaengJeEat + '\');">' + gData[i].VisitDate + '</a></td>';
         html = html + '<td class="t_c" style="text-align:center;">' + gData[i].CureDate + '</td>';
         html = html + '<td class="t_c" style="text-align:center;">' + gData[i].tempC + '</td>';
         html = html + '<td class="t_c" style="text-align:center;">' + gData[i].Feber + '</td>';
@@ -198,33 +205,41 @@ function jsfn_SetGrid(dataRes) {
     setTimeout("jsfn_progressBarMst('N');", 500);
 }
 
-function jsfn_showToYakInfo(_txt_idx, _txt_Visit_Date, _txt_NoPain_Date, _txt_tempC, _rdoFeber, _HaeYeolJeOX, _txt_ChouBang, _txt_Yak_iLbun, _txt_ChamGoSaHang, _txt_BokYongHooKi, _txt_JngSang) {
-    alert('1');
-
+function jsfn_showToYakInfo(_txt_idx, _txt_Visit_Date, _txt_NoPain_Date, _txt_tempC, _rdoFeber, _HaeYeolJeOX, _txt_ChouBang, _txt_Yak_iLbun, _txt_ChamGoSaHang, _txt_BokYongHooKi, _txt_JngSang, _rdoHangSaengJeBokan, _rdoHangSaengJeEat) {
+    
     $("#txt_idx").val(_txt_idx);
     $("#txt_Visit_Date").val(_txt_Visit_Date);
     $("#txt_NoPain_Date").val(_txt_NoPain_Date);
     $("#txt_tempC").val(_txt_tempC);
     //alert(_rdoFeber + ' : _rdoFeber \n' + _HaeYeolJeOX + ' : _HaeYeolJeOX \n' + _rdoHangSaengJeBokan + ' : _rdoHangSaengJeBokan \n' + _rdoHangSaengJeEat + ' : _rdoHangSaengJeEat \n');
-
-    alert('2');
     $('input:radio[name=rdoFeber]:input[value=' + _rdoFeber + ']').attr("checked", true);
     $('input:radio[name=rdoHaeYeolJeOX]:input[value=' + _HaeYeolJeOX + ']').attr("checked", true);
     $('input:radio[name=rdoHangSaengJeBokan]:input[value=' + _rdoHangSaengJeBokan + ']').attr("checked", true);
     $('input:radio[name=rdoHangSaengJeEat]:input[value=' + _rdoHangSaengJeEat + ']').attr("checked", true);
-    alert('3');
     $("#txt_Yak_iLbun").val(_txt_Yak_iLbun);
-    _txt_ChouBang = jsfn_ReplTxt(_txt_ChouBang);
-    _txt_ChamGoSaHang = jsfn_ReplTxt(_txt_ChamGoSaHang);
-    _txt_BokYongHooKi = jsfn_ReplTxt(_txt_BokYongHooKi);
-    _txt_JngSang = jsfn_ReplTxt(_txt_JngSang);
-    alert('4');
+    _txt_ChouBang = jsfn_ReplTxtTBL(unescape(_txt_ChouBang));
+    _txt_ChamGoSaHang = jsfn_ReplTxtTBL(unescape(_txt_ChamGoSaHang));
+    _txt_BokYongHooKi = jsfn_ReplTxtTBL(unescape(_txt_BokYongHooKi));
+    _txt_JngSang = jsfn_ReplTxtTBL(unescape(_txt_JngSang));
     $("#txt_ChouBang").val(_txt_ChouBang);
     $("#txt_ChamGoSaHang").val(_txt_ChamGoSaHang);
     $("#txt_BokYongHooKi").val(_txt_BokYongHooKi);
     $("#txt_JngSang").val(_txt_JngSang);
-    alert('5');
-    jsfn_GotoLayer('Lysec_BokYongHooKi_Write');
-    alert('6');
-    document.location.replace('#Lysec_BokYongHooKi_Write');
+    jsfn_GotoLayerTBL('Lysec_BokYongHooKi_Write');
+}
+
+function jsfn_GotoLayerTBL(strId) {
+    try {
+        location.hash = '';
+        document.location.href = "Default.aspx#" + strId;
+    } catch (e) { }
+}
+
+function jsfn_ReplTxtTBL(str) {
+    var _repl1 = '<div style="max-height: 35px">';
+    var _repl2 = '</div>';
+    str = str.replace(_repl1, '');
+    str = str.replace(_repl2, '');
+    str = str.replace(/<br \/>/g, '\n');
+    return str;
 }
