@@ -127,7 +127,8 @@ public class BasePage : System.Web.UI.Page
         else
         {
             SessionAuth.LogoutProcess();
-            Response.Redirect("~/Login/Login.aspx?", true);
+            //Response.Redirect("~/Login/Login.aspx?", true);
+            Response.Redirect("~/Default.aspx", true);
         }
     }
 

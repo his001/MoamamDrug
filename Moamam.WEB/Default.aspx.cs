@@ -12,7 +12,7 @@ public partial class _Default : System.Web.UI.Page
             //SessionAuth.LogoutProcess();
             //Response.Redirect("~/LogIn/LogIn.aspx");
             _regip = CommonNet.getUserIP();
-            _regiD = SessionAuth.GetUserInfo(Moamam.Data.Common.UserInfoType.UserID).ToString();
+            //_regiD = SessionAuth.GetUserInfo(Moamam.Data.Common.UserInfoType.UserID).ToString();
         }
     }
 }

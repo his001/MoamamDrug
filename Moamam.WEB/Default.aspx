@@ -39,8 +39,8 @@
 						<div class="content">
 							<div class="inner">
 								<h1>첫 방문 이신가요?</h1>
-								<p><a href="#intro" onclick="jsfn_isFirst('Y');"><strong>Yes</strong></a> or <a href="#intro" onclick="jsfn_isFirst('N');"><strong>No</strong></a></p>
-                                    <a href="#Lysec_BokYongHooKi_Best">암호변경</a>
+								<p><a href="#intro"><strong>Yes</strong></a> or <a href="#LymainLogin"><strong>No</strong></a></p>
+                                    <a href="#LymainPwdChange">암호변경</a>
                                 
 							</div>
 						</div>
@@ -57,12 +57,11 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Intro -->
+						<!-- Intro 회원가입 -->
 						<article id="intro">
-							<h2 class="major">회원가입/로그인</h2>
-							<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+							<%--<h2 class="major">회원가입/로그인</h2>
+							<span class="image main"><img src="images/pic01.jpg" alt="" /></span>--%>
 <!-- 회원가입 폼 -->
-<div id="LyQ1_Y1_Reg1" style="display:none;">
 <header><h2>회원가입</h2></header>
 <table border="0" style="width:100%">
     <tr>
@@ -87,9 +86,17 @@
     </tr>
 </table>
 
+<div id="LyQ1_Y1_Reg1" style="display:none;">
 </div>
 
 <div id="LyQ1_Y1_Login1" style="display:none;">
+
+</div>
+						</article>
+
+                        <%-- 로그인 --%>
+                        <article id="LymainLogin">
+							<h2 class="major">회원가입/로그인</h2>
 <header><h2>로그인</h2></header>
 <table border="0" style="width:100%">
     <tr>
@@ -141,9 +148,34 @@
         </td>
     </tr>
 </table>
-</div>
-						</article>
+                        </article>
 
+                        <article id="LymainPwdChange">
+							<h2 class="major">암호변경</h2>
+            <table border="0" style="width:100%">
+                <tr>
+                    <td style="vertical-align:middle;">E-mail</td>
+                    <td><input type="text" id="txtChgUserID" maxlength="50" /></td>
+                    <td rowspan="3" style="padding-left:10px;"></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td style="vertical-align:middle;">암호</td>
+                    <td><input type="password" id="txtOrgPwd" maxlength="50" /></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td style="vertical-align:middle;">변경할암호</td>
+                    <td><input type="password" id="txtNewPwd" maxlength="50" /></td>
+                </tr>
+                <tr><td colspan="3" style="height:10px;"></td></tr>
+                <tr>
+                    <td colspan="3" style="height:10px;">
+                        <input type="button" id="btnChgPwd" value="암호변경" onclick="jsfn_ChangePwd();" />
+                    </td>
+                </tr>
+            </table>
+                        </article>
 						<!-- Lysec_BokYongHooKi_LstGrid 복용 후기 리스트 -->
                         <article id="Lysec_BokYongHooKi_LstGrid" style="width:100%;">
                             <h2 class="major">복용 후기 목록</h2>
@@ -377,7 +409,7 @@ XX 어린이집(유아/유치원)에
 
 
                                         <ul class="actions">
-                                            <li><input type="submit" value="발송하기" /></li>
+                                            <li><input type="button" value="발송하기"  onclick="jsfn_alertClose('발송기능은 아직 준비중입니다.');" /></li>
                                         </ul>
                                     </form>
                                 </div>

@@ -27,7 +27,9 @@ public class SessionAuthModule : IHttpModule
 
         #region ################### data.aspx 에서는 login 체크 하지 않도록 ###################
         if (System.IO.Path.GetFileName(HttpContext.Current.Request.Url.LocalPath).ToString() == "Data.aspx"
-            || System.IO.Path.GetFileName(HttpContext.Current.Request.Url.LocalPath).ToString() == "DrugInfo.aspx")    // data.aspx 에서는 login 체크 하지 않도록
+            || System.IO.Path.GetFileName(HttpContext.Current.Request.Url.LocalPath).ToString() == "DrugInfo.aspx"
+            || HttpContext.Current.Request.Url.LocalPath.ToString().ToLower() == "/default.aspx"
+            )    // data.aspx 에서는 login 체크 하지 않도록
         {
             return;
         }
