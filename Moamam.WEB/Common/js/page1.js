@@ -320,9 +320,9 @@ function jsfn_BokYongHooKi_Save() {
 
 function jsfn_Pop1SaveSuccess(idx) {
     var _txt_idx = $("#txt_idx").val(idx);
-    jsfn_SaveDrug();
+    jsfn_SaveBokYongDrug();
     jsfn_alertClose('저장 되었습니다.');
-    //$('#LyModalPop1Layer').bPopup().close();
+    document.location.replace = '#Lysec_BokYongHooKi_Write';
 }
 
 
@@ -441,6 +441,10 @@ function jsfn_SerchItemClick4PopUp(Item, ItemName) {
     //$('#sel_ChouBangYak').append('<option value="' + Item + '">' + _ItemName + '</option>');
     // // 기존 select Box 에 바인딩 하던 방식 E
 
+    Item = Item.replace(/'/g, '');
+    ItemName = ItemName.replace(/'/g, '');
+
+    var _goOn = 'Y';
     var index = 0;
     var _chk_ITEM_SEQ = '';
     $('input[type=checkbox][name="rpt1_chkBox"]').each(function () {
@@ -448,20 +452,23 @@ function jsfn_SerchItemClick4PopUp(Item, ItemName) {
             _chk_ITEM_SEQ = $("input[name=gridDrug1_hdn_ITEM_SEQ]:eq(" + index + ")").val();
             if (_chk_ITEM_SEQ == Item)
             {
-                alert('이미 동일한 item 이 등록 되어있습니다.');
+                jsfn_alertClose('이미 동일한 item 이 등록 되어있습니다.');
+                _goOn = 'N';
+                return false;
             }
         }
         index++;
     });
 
-    var html = '';
-    html = html + '<tr class="tr_c">';
-    html = html + '<td class="t_c" style="text-align:center;"><input type="checkbox" id="rpt1_chkBox_' + index + '" name="rpt1_chkBox" checked="checked" disabled="disabled">' + ItemName
-    html = html + '<input type="text" id="gridDrug1_hdn_ITEM_SEQ" name="gridDrug1_hdn_ITEM_SEQ" value="' + Item + '" style="display:none;"></td>';
-    html = html + '<td class="t_c" style="text-align:left;"><input type="text" id="gridDrug1_hdn_ITEM_MEMO" name="gridDrug1_hdn_ITEM_MEMO" value=""></td>';
-    html = html + '</tr>';
-    $('#dvGrid1Drug > tbody:last').append(html);
+    if (_goOn == 'Y')
+    {
+        var html = '';
+        html = html + '<tr class="tr_c">';
+        html = html + '<td class="t_c" style="text-align:left;"><input type="checkbox" id="rpt1_chkBox_' + index + '" name="rpt1_chkBox" checked="checked" disabled="disabled" style="display:none;">' + ItemName
+        html = html + '<input type="text" id="gridDrug1_hdn_ITEM_SEQ" name="gridDrug1_hdn_ITEM_SEQ" value="' + Item + '" style="display:none;"></td>';
+        html = html + '<td class="t_c" style="text-align:left;"><input type="text" id="gridDrug1_hdn_ITEM_MEMO" name="gridDrug1_hdn_ITEM_MEMO" value=""></td>';
+        html = html + '</tr>';
+        $('#dvGrid1Drug > tbody:last').append(html);
+    }
     jsfn_btnPopExit();
-
-
 }

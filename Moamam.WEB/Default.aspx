@@ -25,7 +25,6 @@
 <script src="/assets/js/skel.min.js"></script>
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/main.js"></script>
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -68,7 +67,7 @@
 <table border="0" style="width:100%">
     <tr>
         <td colspan="3">
-            IP : <span id="txt_Userip"></span>
+            IP : <span id="txt_Userip"><%=_regip%></span>
         </td>
     </tr>
     <tr>
@@ -227,7 +226,7 @@ ex) 기침, 콧물
                                                     <table>
                                                         <tr style="height:2px;background-color:white;">
                                                             <td style="background-color:green;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberGraan" value="G" checked /><label for="rdoFeberGraan" style="color:white;cursor:pointer;">정상</label></td>
-                                                            <td style="background-color:yellow;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberYellow" value="Y" /><label for="rdoFeberYellow" style="cursor:pointer;">미열</label></td>
+                                                            <td style="background-color:yellow;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberYellow" value="Y" /><label for="rdoFeberYellow" style="cursor:pointer;color:#000;">미열</label></td>
                                                             <td style="background-color:red;width:33%;text-align:center;"><input type="radio" name="rdoFeber" id="rdoFeberRed" value="R" /><label for="rdoFeberRed" style="cursor:pointer;">고열</label></td>
                                                         </tr>
                                                     </table>
@@ -257,21 +256,20 @@ ex) 기침, 콧물
                                 <div class="row">
                                     <!-- 8 : 4 비율 -->
                                     <div class="col-xs-8 col-sm-8 col-md-8">
-
 <textarea id="txt_ChouBang" name="txt_ChouBang" style="height:120px;padding-right:10px;font-size:12px;">
 < 처방 >
 ex) 투세프건조시럽
 
 </textarea>
-                                        <br />
-                                        <a href="javascript:jsfn_getDrugInfo();">처방-약종류 불러오기</a><br />
-<select id="sel_ChouBangYak" size="5" style="width:99%"></select>
-<table id="dvGrid1Drug" style="min-width:600px;left:0;">
+<br />
+<a href="javascript:jsfn_getDrugInfo();">처방-약종류 불러오기</a><br />
+<%--<select id="sel_ChouBangYak" size="5" style="width:99%"></select>--%>
+<table id="dvGrid1Drug" style="min-width:99%;left:0;">
 <thead>
     <tr style="height:35px;">
-<td style="color:white;"><b>ITEM_NAME</b></td>
-<td style="color:white;"><b>ITEM_MEMO</b></td>
-<td style="display:none;"><b>ITEM_SEQ</b></td>
+<td style="color:white;"><b>약이름</b></td>
+<td style="color:white;"><b>메모</b></td>
+<td style="display:none;"><b>약고유순번</b></td>
     </tr>
 </thead>
     <tr>
@@ -293,16 +291,10 @@ ex) 투세프건조시럽
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanCold" value="C" checked />
+                                                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanCold" value="C" checked="checked" /><label for="rdoHangSaengJeBokanCold" style="cursor:pointer;">냉장</label>
                                                 </td>
                                                 <td>
-                                                    <label for="rdoHangSaengJeBokanCold" style="cursor:pointer;">냉장</label>
-                                                </td>
-                                                <td>
-                                                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanSilOn" value="S" />
-                                                </td>
-                                                <td>
-                                                    <label for="rdoHangSaengJeBokanSilOn" style="cursor:pointer;">실온</label>
+                                                    <input type="radio" name="rdoHangSaengJeBokan" id="rdoHangSaengJeBokanSilOn" value="S" /><label for="rdoHangSaengJeBokanSilOn" style="cursor:pointer;">실온</label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -311,22 +303,13 @@ ex) 투세프건조시럽
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatA" value="A" />
+                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatA" value="A" /><label for="rdoHangSaengJeEatA" style="cursor:pointer;">식전</label>
                                                 </td>
                                                 <td>
-                                                    <label for="rdoHangSaengJeEatA" style="cursor:pointer;">식전</label>
+                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatB" value="B" /><label for="rdoHangSaengJeEatB" style="cursor:pointer;">식간</label>
                                                 </td>
                                                 <td>
-                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatB" value="B" />
-                                                </td>
-                                                <td>
-                                                    <label for="rdoHangSaengJeEatB" style="cursor:pointer;">식간</label>
-                                                </td>
-                                                <td>
-                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatC" value="C" checked />
-                                                </td>
-                                                <td>
-                                                    <label for="rdoHangSaengJeEatC" style="cursor:pointer;">식후</label>
+                                                    <input type="radio" name="rdoHangSaengJeEat" id="rdoHangSaengJeEatC" value="C" checked="checked" /><label for="rdoHangSaengJeEatC" style="cursor:pointer;">식후</label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -433,13 +416,13 @@ XX 어린이집(유아/유치원)에
         $(document).ready(function () {
             jsfn_chkCookieID();
             $("#txtPwd").keypress(function (event) { if (event.which == 13) { jsfn_LoginChk(); } });
-            jsfn_getUserIP(function (ip) { $("#txt_Userip").html(ip); });
+            //jsfn_getUserIP(function (ip) { $("#txt_Userip").html(ip); });
             $(".numericOnly").keypress(function (e) {
                 if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
             });
             var _Glovaltoday = new Date();
             $("#txt_Visit_Date").val(_Glovaltoday.toISOString().substring(0, 10));
-            jsfn_InitGrid();
+            //jsfn_InitGrid();
         });
         //#########################################
     </script>

@@ -19,9 +19,15 @@ namespace Moamam.Lib
         /// <returns></returns>
         public static string getUserIP()
         {
-            string IPAddress = string.Empty;
-            IPAddress = GetIPAddress(Dns.GetHostName()).ToString();
-            return IPAddress;
+            //string IPAddress = string.Empty;
+            //IPAddress = GetIPAddress(Dns.GetHostName()).ToString();
+            //return IPAddress;
+            string strHostName = "";
+            strHostName = System.Net.Dns.GetHostName();
+
+            IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+            string ipaddress = ipEntry.AddressList[2].ToString();
+            return ipaddress;
         }
 
         public static IPAddress GetIPAddress(string hostName)
