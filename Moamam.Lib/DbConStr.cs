@@ -18,7 +18,7 @@ namespace Moamam.Lib
     {
         public static string getDbConstr()
         {
-            string _conStr = @"server=drugs.or.kr; database=drugsave; uid=drugsave; pwd=Skgmltn1@";
+            string _conStr = @"server=";
             return _conStr;
         }
 
